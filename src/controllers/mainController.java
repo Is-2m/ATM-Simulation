@@ -3,8 +3,7 @@ package controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-
-import javax.swing.text.html.ImageView;
+import javafx.scene.image.ImageView;
 
 public class mainController {
     @FXML
