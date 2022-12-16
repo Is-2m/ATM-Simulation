@@ -1,0 +1,20 @@
+.root {
+    /*-fx-background-image: url('../../assets/background.png');*/
+    /*-fx-background-repeat: no-repeat;*/
+    /*-fx-background-size: cover;*/
+}
+.side_physical_button{
+    -fx-background-radius: 30;
+    -fx-font: 16px "Serif";
+    -fx-padding: 10 10 10 10;
+    -fx-text-fill: white;
+    -fx-background-color: #353131;
+}
+.bankName {
+    -fx-font-family: Poppins;
+    -fx-font-size: 20px;
+}
+.shadowed {
+    -fx-effect: dropShadow(three-pass-box, rgba(0, 0, 0, 0.1), 10, 0, 0, 10);
+    -fx-border: 2 solid Black ;
+}

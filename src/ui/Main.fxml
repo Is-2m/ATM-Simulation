@@ -1,23 +1,130 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1360.0" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.mainController">
+    <left>
+        <GridPane maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="356.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="side_physical_button" text="" GridPane.halignment="CENTER" />
+                <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="side_physical_button" text="" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="side_physical_button" text="" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="side_physical_button" text="" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+            </children>
+            <BorderPane.margin>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="120.0" />
+            </BorderPane.margin>
+        </GridPane>
+    </left>
+    <right>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <ImageView fitHeight="458.0" fitWidth="591.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/background.png" />
-         </image>
-      </ImageView>
-      <BorderPane prefHeight="200.0" prefWidth="200.0">
-         <left>
-            <Button mnemonicParsing="false" text="Button" BorderPane.alignment="CENTER" />
-         </left>
-      </BorderPane>
-   </children>
-</StackPane>
+        <GridPane maxWidth="1.7976931348623157E308" minWidth="-Infinity" BorderPane.alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="side_physical_button" text="" GridPane.halignment="CENTER" />
+                <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="side_physical_button" text="" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="side_physical_button" text="" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="side_physical_button" text="" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+            </children>
+            <BorderPane.margin>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="120.0" />
+            </BorderPane.margin>
+        </GridPane>
+    </right>
+   <top>
+      <FlowPane BorderPane.alignment="CENTER">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="100.0" />
+         </children>
+      </FlowPane>
+   </top>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: grey; -fx-border-radius: 30;" styleClass="shadowed" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="460.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+               <image>
+                  <Image url="@../assets/lowerCorner.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="880.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <image>
+                  <Image url="@../assets/upperCorner.png" />
+               </image>
+            </ImageView>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <center>
+                  <ImageView fitHeight="345.0" fitWidth="421.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                     <image>
+                        <Image url="@../assets/the_two_weird_guys.png" />
+                     </image>
+                     <BorderPane.margin>
+                        <Insets bottom="60.0" right="360.0" />
+                     </BorderPane.margin>
+                  </ImageView>
+               </center>
+               <top>
+                  <FlowPane prefHeight="57.0" prefWidth="1078.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <ImageView fx:id="img_bankLogo" fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/bankLogo.png" />
+                           </image>
+                           <FlowPane.margin>
+                              <Insets bottom="5.0" left="10.0" top="10.0" />
+                           </FlowPane.margin>
+                        </ImageView>
+                        <Label fx:id="lbl_bankName" text="SOUSOU BANK">
+                           <FlowPane.margin>
+                              <Insets left="10.0" />
+                           </FlowPane.margin>
+                           <font>
+                              <Font name="Arial" size="38.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </FlowPane>
+               </top>
+            </BorderPane>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="20.0" />
+         </BorderPane.margin>
+      </AnchorPane>
+   </center>
+   <bottom>
+      <FlowPane prefHeight="39.0" prefWidth="1360.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </FlowPane>
+   </bottom>
+</BorderPane>
