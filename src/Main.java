@@ -4,6 +4,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -14,7 +15,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("ui/Main.fxml"));
+        Font.loadFont(getClass().getResourceAsStream("./assets/fonts/poppins.ttf"), 16);
+        Parent root = FXMLLoader.load(getClass().getResource("ui/LoginScreen.fxml"));
         Scene s = new Scene(root);
         stage.setTitle("ATM Simulation");
         stage.setScene(s);

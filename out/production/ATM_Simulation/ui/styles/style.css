@@ -1,22 +1,47 @@
+@font-face {
+    font-family: 'PoppinsFile';
+    src: url('../../assets/fonts/poppins.ttf');
+}
+
 .root {
+    -fx-font-family:"PoppinsFile" ;
     /*-fx-background-image: url('../../assets/background.png');*/
     /*-fx-background-repeat: no-repeat;*/
     /*-fx-background-size: cover;*/
     -fx-background-color: white;
 }
-.side_physical_button{
+
+.side_physical_button {
     -fx-background-radius: 30;
     -fx-font: 16px "Serif";
     -fx-padding: 10 10 10 10;
     -fx-text-fill: white;
     -fx-background-color: #353131;
 }
+
 .bankName {
     -fx-font-family: Poppins;
     -fx-font-size: 20px;
 }
+
 .shadowed {
     /*-fx-border-style: groove;*/
     /*-fx-effect: dropShadow(three-pass-box, rgba(0, 0, 0, 0.1), 10, 0, 0, 10);*/
     /*-fx-border: 2 solid Black;*/
 }
+
+.choice_button {
+    -fx-font-family: PoppinsFile;
+    -fx-padding: 20 20 20 20;
+    -fx-background-color: #DFE3F5;
+    -fx-effect: dropShadow(three-pass-box, rgba(0, 0, 0, 0.25), 5, 0, 0, 4);
+    -fx-border-style: solid;
+    -fx-border-color: #98A6DF;
+    -fx-border-width: 1;
+}
+.custom_text_input {
+    -fx-padding: 20 20 20 20;
+    -fx-background-color: #ffffff;
+    -fx-effect: dropShadow(three-pass-box, rgba(0, 0, 0, 0.65), 5, 0, 0, 4);
+}
+

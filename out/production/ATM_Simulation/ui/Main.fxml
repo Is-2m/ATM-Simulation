@@ -12,6 +12,7 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
@@ -78,19 +79,19 @@
             </Rectangle>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="460.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
                <image>
-                  <Image url="@../assets/lowerCorner.png" />
+                  <Image url="@../assets/images/lowerCorner.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="880.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <image>
-                  <Image url="@../assets/upperCorner.png" />
+                  <Image url="@../assets/images/upperCorner.png" />
                </image>
             </ImageView>
             <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <center>
                   <ImageView fitHeight="345.0" fitWidth="421.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                      <image>
-                        <Image url="@../assets/the_two_weird_guys.png" />
+                        <Image url="@../assets/images/the_two_weird_guys.png" />
                      </image>
                      <BorderPane.margin>
                         <Insets bottom="60.0" right="360.0" />
@@ -102,7 +103,7 @@
                      <children>
                         <ImageView fx:id="img_bankLogo" fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../assets/bankLogo.png" />
+                              <Image url="@../assets/images/bankLogo.png" />
                            </image>
                            <FlowPane.margin>
                               <Insets bottom="5.0" left="10.0" top="10.0" />
@@ -131,11 +132,15 @@
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="70.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="175.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#98a6df" height="56.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="727.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0cbc8b" height="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="302.0">
+            <StackPane>
                <FlowPane.margin>
                   <Insets left="130.0" />
                </FlowPane.margin>
-            </Rectangle>
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0cbc8b" height="32.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="302.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dee8f5" height="16.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="215.0" />
+               </children>
+            </StackPane>
          </children>
          <opaqueInsets>
             <Insets />

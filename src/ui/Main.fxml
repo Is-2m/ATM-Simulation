@@ -79,19 +79,19 @@
             </Rectangle>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="460.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
                <image>
-                  <Image url="@../assets/lowerCorner.png" />
+                  <Image url="@../assets/images/lowerCorner.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="880.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <image>
-                  <Image url="@../assets/upperCorner.png" />
+                  <Image url="@../assets/images/upperCorner.png" />
                </image>
             </ImageView>
             <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <center>
                   <ImageView fitHeight="345.0" fitWidth="421.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                      <image>
-                        <Image url="@../assets/the_two_weird_guys.png" />
+                        <Image url="@../assets/images/the_two_weird_guys.png" />
                      </image>
                      <BorderPane.margin>
                         <Insets bottom="60.0" right="360.0" />
@@ -103,7 +103,7 @@
                      <children>
                         <ImageView fx:id="img_bankLogo" fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../assets/bankLogo.png" />
+                              <Image url="@../assets/images/bankLogo.png" />
                            </image>
                            <FlowPane.margin>
                               <Insets bottom="5.0" left="10.0" top="10.0" />
