@@ -133,7 +133,7 @@
                                     <Insets left="400.0" top="20.0" />
                                  </FlowPane.margin>
                               </ImageView>
-                              <Label text="Please Insert Your Card Number">
+                              <Label text="PLEASE INSERT YOUR CARD NUMBER">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -143,7 +143,7 @@
                               </Label>
                            </children>
                         </FlowPane>
-                        <TextField fx:id="txt_CardNum" alignment="CENTER" promptText="XXXX XXXX XXXX XXXX" styleClass="custom_text_input" GridPane.rowIndex="1">
+                        <TextField fx:id="txt_CardNum" alignment="CENTER" onKeyReleased="#keyReleased" promptText="XXXX XXXX XXXX XXXX" styleClass="custom_text_input" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets left="240.0" right="240.0" />
                            </GridPane.margin>
@@ -151,14 +151,32 @@
                               <Font size="36.0" />
                            </font>
                         </TextField>
-                        <Button fx:id="btn_Next" mnemonicParsing="false" prefHeight="57.0" prefWidth="195.0" styleClass="green_button" text="NEXT" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
+                        <FlowPane GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                           <children>
+                              <Button fx:id="btn_cancel" mnemonicParsing="false" onAction="#btn_cancel_Clicked" prefHeight="57.0" prefWidth="195.0" styleClass="red_button" text="CANCEL">
+                                 <font>
+                                    <Font name="System Bold" size="21.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <FlowPane.margin>
+                                    <Insets left="240.0" top="10.0" />
+                                 </FlowPane.margin>
+                              </Button>
+                              <Button fx:id="btn_Next" mnemonicParsing="false" onAction="#btn_next_Clicked" prefHeight="57.0" prefWidth="195.0" styleClass="green_button" text="NEXT">
+                                 <font>
+                                    <Font name="System Bold" size="21.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <FlowPane.margin>
+                                    <Insets left="215.0" top="10.0" />
+                                 </FlowPane.margin>
+                              </Button>
+                           </children>
+                        </FlowPane>
                      </children>
                   </GridPane>
                </center>

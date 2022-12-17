@@ -45,7 +45,6 @@
     -fx-effect: dropShadow(three-pass-box, rgba(0, 0, 0, 0.65), 5, 0, 0, 4);
 }
 .green_button{
-
     -fx-text-fill: white;
     -fx-font-family: PoppinsFile;
     -fx-padding: 20 20 20 20;
@@ -53,4 +52,12 @@
     -fx-effect: dropShadow(three-pass-box, rgba(0, 0, 0, 0.25), 5, 0, 0, 4);
     -fx-background-radius: 20;
 }
+.red_button{
+     -fx-text-fill: white;
+     -fx-font-family: PoppinsFile;
+     -fx-padding: 20 20 20 20;
+     -fx-background-color: #FF0505;
+     -fx-effect: dropShadow(three-pass-box, rgba(0, 0, 0, 0.25), 5, 0, 0, 4);
+     -fx-background-radius: 20;
+ }
 

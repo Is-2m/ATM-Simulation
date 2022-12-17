@@ -4,24 +4,32 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class DebitCard {
-    private int cardNum;
+    private long cardNum;
     private Date expirationDate;
     private int cvc;
+    private int pin;
     private Customer owner;
     private Bank managedBy;
 
     public DebitCard() {
     }
 
-    public DebitCard(int cardNum, Date expirationDate, int cvc, Customer owner, Bank managedBy) {
+    public DebitCard(long cardNum, Date expirationDate, int cvc,int pin) {
         this.cardNum = cardNum;
         this.expirationDate = expirationDate;
         this.cvc = cvc;
+        this.pin=pin;
+    }
+    public DebitCard(long cardNum, Date expirationDate, int cvc,int pin, Customer owner, Bank managedBy) {
+        this.cardNum = cardNum;
+        this.expirationDate = expirationDate;
+        this.cvc = cvc;
+        this.pin=pin;
         this.owner = owner;
         this.managedBy = managedBy;
     }
 
-    public int getCardNum() {
+    public long getCardNum() {
         return cardNum;
     }
 
@@ -55,5 +63,13 @@ public class DebitCard {
 
     public void setManagedBy(Bank managedBy) {
         this.managedBy = managedBy;
+    }
+
+    public int getPin() {
+        return pin;
+    }
+
+    public void setPin(int pin) {
+        this.pin = pin;
     }
 }

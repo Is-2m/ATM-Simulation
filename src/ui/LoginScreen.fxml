@@ -132,16 +132,16 @@
                       <RowConstraints maxHeight="230.0" minHeight="10.0" prefHeight="223.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button fx:id="btn_logWithCard" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="choice_button" text="Insert Card" GridPane.halignment="CENTER">
+                        <Button fx:id="btn_logWithCard" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#logWithCard" styleClass="choice_button" text="INSERT CARD" GridPane.halignment="CENTER">
                            <font>
-                              <Font name="Arial" size="18.0" />
+                              <Font name="Arial Bold" size="18.0" />
                            </font>
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></Button>
-                        <Button fx:id="btn_logWithoutCard" layoutX="16.0" layoutY="57.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="choice_button" text="Continue Without Card" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                        <Button fx:id="btn_logWithoutCard" layoutX="16.0" layoutY="57.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#logCardless" styleClass="choice_button" text="USE CARDLESS SERVICE" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                            <font>
-                              <Font name="Arial" size="18.0" />
+                              <Font name="Arial Bold" size="18.0" />
                            </font>
                            <cursor>
                               <Cursor fx:constant="HAND" />
