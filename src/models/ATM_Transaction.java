@@ -1,9 +1,11 @@
 package models;
 
+import dao.Shared;
+
 import java.util.Date;
 
 public class ATM_Transaction {
-    private int transactionId;
+    private String transactionId;
     private Date transDate;
     private TransactionType type;
     private double amount;
@@ -13,7 +15,7 @@ public class ATM_Transaction {
     public ATM_Transaction() {
     }
 
-    public ATM_Transaction(int transactionId, Date transDate, TransactionType type, double amount, Account sourceAcc, Account destinationAcc) {
+    public ATM_Transaction(String transactionId, Date transDate, TransactionType type, double amount, Account sourceAcc, Account destinationAcc) {
         this.transactionId = transactionId;
         this.transDate = transDate;
         this.type = type;
@@ -22,7 +24,15 @@ public class ATM_Transaction {
         this.destinationAcc = destinationAcc;
     }
 
-    public int getTransactionId() {
+    public ATM_Transaction(String transactionId, Date transDate, TransactionType type, double amount, Account sourceAcc) {
+        this.transactionId = transactionId;
+        this.transDate = transDate;
+        this.type = type;
+        this.amount = amount;
+        this.sourceAcc = sourceAcc;
+    }
+
+    public String getTransactionId() {
         return transactionId;
     }
 
@@ -68,10 +78,12 @@ public class ATM_Transaction {
     }
 
     public boolean update() {
+        boolean mode = sourceAcc.getManagedBy().getIdBank() == Shared.getCurrentATM().getManagedBy().getIdBank();
+        double tariff = mode ? 0 : 6;
         if (type == TransactionType.WITHDRAWAL) {
-            return sourceAcc.withdraw(amount,0);
+            return sourceAcc.withdraw(amount, tariff);
         } else {
-            if (sourceAcc.withdraw(amount,0)) {
+            if (sourceAcc.withdraw(amount, tariff)) {
                 destinationAcc.deposit(amount);
                 return true;
             }

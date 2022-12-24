@@ -124,7 +124,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button fx:id="btn_checkBalance" mnemonicParsing="false" prefHeight="82.0" prefWidth="214.0" styleClass="choice_button" text="CHECK BALANCE">
+                        <Button fx:id="btn_checkBalance" mnemonicParsing="false" onAction="#btn_checkBalance_Clicked" prefHeight="82.0" prefWidth="214.0" styleClass="choice_button" text="CHECK BALANCE">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -138,7 +138,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button fx:id="btn_changePin" mnemonicParsing="false" prefHeight="82.0" prefWidth="214.0" styleClass="choice_button" text="CHANGE PIN" GridPane.rowIndex="2">
+                        <Button fx:id="btn_changePin" mnemonicParsing="false" onAction="#btn_changePin_Clicked" prefHeight="82.0" prefWidth="214.0" styleClass="choice_button" text="CHANGE PIN" GridPane.rowIndex="2">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -152,7 +152,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button fx:id="btn_withdrawCash" mnemonicParsing="false" prefHeight="82.0" prefWidth="214.0" styleClass="choice_button" text="WITHDRAW CASH" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+                        <Button fx:id="btn_withdrawCash" mnemonicParsing="false" onAction="#btn_withdrawCash_Clicked" prefHeight="82.0" prefWidth="214.0" styleClass="choice_button" text="WITHDRAW CASH" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -166,7 +166,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button fx:id="btn_transferMoney" mnemonicParsing="false" prefHeight="82.0" prefWidth="214.0" styleClass="choice_button" text="TRANSFER MONEY" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                        <Button fx:id="btn_transferMoney" mnemonicParsing="false" onAction="#btn_transferMoney_Clicked" prefHeight="82.0" prefWidth="214.0" styleClass="choice_button" text="TRANSFER MONEY" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>

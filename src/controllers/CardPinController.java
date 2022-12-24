@@ -53,7 +53,7 @@ public class CardPinController implements Initializable {
             while (attempts < 3) {
                 int pin = Integer.parseInt(txt_PinCode.getText());
                 if (Shared.getCurrentCard().tryPin(pin)) {
-                    NavigationController.navigateTo(Shared.OperationChoosingScreen, ((Node) event.getSource()));
+                    NavigationController.navigateTo(Shared.OperationChoosingScreen, (Node) event.getSource());
                 } else {
                     lbl_tryAgain.setVisible(true);
                     txt_PinCode.setText("");

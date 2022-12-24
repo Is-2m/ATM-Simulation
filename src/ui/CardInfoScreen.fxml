@@ -177,7 +177,7 @@
                                                <Insets left="400.0" right="10.0" top="10.0" />
                                            </FlowPane.margin>
                                        </ImageView>
-                                    <Label text="PLEASE INSERT YOUR CARD NUMBER">
+                                    <Label styleClass="labels" text="PLEASE INSERT YOUR CARD NUMBER">
                                        <font>
                                           <Font name="Poppins Regular" size="20.0" />
                                        </font>
@@ -187,7 +187,7 @@
                                     </Label>
                                    </children>
                                </FlowPane>
-                                 <Label fx:id="lbl_tryAgain" text="TRY AGAIN !" textFill="RED" visible="false" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                 <Label fx:id="lbl_tryAgain" styleClass="labels" text="TRY AGAIN !" textFill="RED" visible="false" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                                      <font>
                                          <Font name="Poppins SemiBold" size="20.0" />
                                      </font>

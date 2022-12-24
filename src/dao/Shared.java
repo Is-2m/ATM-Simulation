@@ -9,17 +9,18 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Objects;
 
 public abstract class Shared {
-    public static String CardInfoScreen="../ui/CardInfoScreen.fxml";
-    public static String CardPinScreen="../ui/CardPinScreen.fxml";
-    public static String ChooseAmountScreen="../ui/ChooseAmountScreen.fxml";
-    public static String LoginScreen="../ui/LoginScreen.fxml";
-    public static String OperationChoosingScreen="../ui/OperationChoosingScreen.fxml";
-    public static String PrintReceiptScreen="../ui/PrintReceiptScreen.fxml";
-    public static String CardExpiredScreen="../ui/CardExpiredScreen.fxml";
-//    public static String CardInfoScreen="../ui/CardInfoScreen.fxml";
-//    public static String CardInfoScreen="../ui/CardInfoScreen.fxml";
+    public static String CardInfoScreen = "../ui/CardInfoScreen.fxml";
+    public static String CardPinScreen = "../ui/CardPinScreen.fxml";
+    public static String ChooseAmountScreen = "../ui/ChooseAmountScreen.fxml";
+    public static String LoginScreen = "../ui/LoginScreen.fxml";
+    public static String OperationChoosingScreen = "../ui/OperationChoosingScreen.fxml";
+    public static String PrintReceiptScreen = "../ui/PrintReceiptScreen.fxml";
+    public static String CardExpiredScreen = "../ui/CardExpiredScreen.fxml";
+    public static String WrongAmountScreen = "../ui/WrongAmountScreen.fxml";
+    //    public static String CardInfoScreen="../ui/CardInfoScreen.fxml";
     static Connection con;
 
     static {
@@ -33,9 +34,8 @@ public abstract class Shared {
 
     private static ATM currentATM;
     private static DebitCard currentCard;
-    private static Bank currentBank;
-    private static Account currentAccount;
-    private static Customer currentCustomer;
+    private static TransactionType transactionType;
+
     public static ATM getCurrentATM() {
         return currentATM;
     }
@@ -52,38 +52,22 @@ public abstract class Shared {
         Shared.currentCard = currentCard;
     }
 
-    public static Bank getCurrentBank() {
-        return currentBank;
-    }
-
-    public static void setCurrentBank(Bank currentBank) {
-        Shared.currentBank = currentBank;
-    }
-
-    public static Account getCurrentAccount() {
-        return currentAccount;
-    }
-
-    public static void setCurrentAccount(Account currentAccount) {
-        Shared.currentAccount = currentAccount;
-    }
-
-    public static Customer getCurrentCustomer() {
-        return currentCustomer;
-    }
-
-    public static void setCurrentCustomer(Customer currentCustomer) {
-        Shared.currentCustomer = currentCustomer;
-    }
-
 
     public static boolean isMyResultSetEmpty(ResultSet rs) throws SQLException {
         return (!rs.isBeforeFirst() && rs.getRow() == 0);
     }
 
     public static void customizeCurrentAtm(ImageView imgLogo, Label lbl_bankName) {
-        Image logo = new Image(Shared.class.getResourceAsStream("..\\assets\\logos\\"+currentATM.getManagedBy().getBankName()+".png"));
+        Image logo = new Image(Objects.requireNonNull(Shared.class.getResourceAsStream("..\\assets\\logos\\" + currentATM.getManagedBy().getBankName() + ".png")));
         imgLogo.setImage(logo);
         lbl_bankName.setText(currentATM.getManagedBy().getBankName());
+    }
+
+    public static TransactionType getTransactionType() {
+        return transactionType;
+    }
+
+    public static void setTransactionType(TransactionType transactionType) {
+        Shared.transactionType = transactionType;
     }
 }

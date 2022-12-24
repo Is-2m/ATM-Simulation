@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import models.TransactionType;
 
 import java.io.IOException;
 import java.net.URL;
@@ -26,6 +27,7 @@ public class OperationChoosingController implements Initializable {
     ImageView img_bankLogo;
     @FXML
     Label lbl_bankName;
+    boolean Mode;
 
 
     @Override
@@ -35,18 +37,15 @@ public class OperationChoosingController implements Initializable {
     }
 
     public void btn_cancel_Clicked(ActionEvent event) {
-        try {
-            NavigationController.navigateTo(Shared.LoginScreen, (Node) event.getSource());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        NavigationController.navigateTo(Shared.LoginScreen, (Node) event.getSource());
+
     }
 
     void visibilityController() {
-        boolean mode =
+        Mode =
                 Shared.getCurrentCard().getProvidesAccessTo().getManagedBy().getIdBank() ==
                         Shared.getCurrentATM().getManagedBy().getIdBank();
-        if (!mode) {
+        if (!Mode) {
             btn_changePin.setVisible(false);
             btn_checkBalance.setVisible(false);
             btn_transferMoney.setVisible(false);
@@ -57,5 +56,23 @@ public class OperationChoosingController implements Initializable {
             btn_transferMoney.setVisible(true);
             btn_withdrawCash.setVisible(true);
         }
+    }
+
+    public void btn_checkBalance_Clicked(ActionEvent event) {
+
+    }
+
+    public void btn_changePin_Clicked(ActionEvent event) {
+
+    }
+
+    public void btn_withdrawCash_Clicked(ActionEvent event) {
+        Shared.setTransactionType(TransactionType.WITHDRAWAL);
+        NavigationController.navigateTo(Shared.ChooseAmountScreen, (Node) event.getSource());
+    }
+
+    public void btn_transferMoney_Clicked(ActionEvent event) {
+        Shared.setTransactionType(TransactionType.TRANSFER);
+
     }
 }

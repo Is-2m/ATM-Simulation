@@ -1,4 +1,3 @@
-import controllers.NavigationController;
 import dao.ATMDao;
 import dao.Shared;
 import javafx.application.Application;
@@ -11,7 +10,6 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class MainClass extends Application {
-    private static NavigationController navigator = new NavigationController();
 
     public static void main(String[] args) {
         launch(args);

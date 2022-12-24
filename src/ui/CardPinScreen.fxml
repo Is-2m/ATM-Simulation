@@ -175,12 +175,12 @@
                                     <Insets right="10.0" />
                                  </GridPane.margin>
                                         </ImageView>
-                              <Label fx:id="lbl_tryAgain" text="TRY AGAIN!" textFill="#f80000" visible="false" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                              <Label fx:id="lbl_tryAgain" styleClass="labels" text="TRY AGAIN!" textFill="#f80000" visible="false" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                  <font>
                                     <Font name="Poppins SemiBold" size="20.0" />
                                  </font>
                               </Label>
-                                        <Label text="PLEASE INSERT YOUR CARD PIN" GridPane.columnIndex="1" GridPane.valignment="BOTTOM">
+                                        <Label styleClass="labels" text="PLEASE INSERT YOUR CARD PIN" GridPane.columnIndex="1" GridPane.valignment="BOTTOM">
                                             <font>
                                                 <Font name="Poppins Regular" size="20.0" />
                                             </font>

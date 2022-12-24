@@ -93,7 +93,7 @@ INSERT INTO `atm` (`idAtm`, `bankID`) VALUES
 
 DROP TABLE IF EXISTS `atm_transaction`;
 CREATE TABLE IF NOT EXISTS `atm_transaction` (
-  `transactionID` int(11) NOT NULL,
+  `transactionID` varchar(20) NOT NULL,
   `transactionDate` datetime DEFAULT NULL,
   `type` text,
   `amount` double DEFAULT NULL,
