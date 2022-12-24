@@ -18,14 +18,14 @@ public class ATMDao {
     public static ATM getAtm() {
         int atmId = atmIds[new Random().nextInt(0, 17)];
         try {
-            ATM atm = null;
+            ATM atm = new ATM();
             Statement stmt = con.createStatement();
             String qry = "SELECT * FROM atm WHERE idAtm= " + atmId;
             ResultSet res = stmt.executeQuery(qry);
             if (!isMyResultSetEmpty(res)) {
                 while (res.next()) {
-                    atm.setIdATM(res.getInt(0));
-                    atm.setManagedBy(BankDao.getBank(res.getInt(1)));
+                    atm.setIdATM(res.getInt("idAtm"));
+                    atm.setManagedBy(BankDao.getBank(res.getInt("bankID")));
                 }
             }
             return atm;

@@ -8,25 +8,24 @@ public class DebitCard {
     private Date expirationDate;
     private int cvc;
     private int pin;
-    private Customer owner;
-    private Bank managedBy;
+    private Account providesAccessTo;
 
     public DebitCard() {
     }
 
-    public DebitCard(long cardNum, Date expirationDate, int cvc,int pin) {
+    public DebitCard(long cardNum, Date expirationDate, int cvc, int pin) {
         this.cardNum = cardNum;
         this.expirationDate = expirationDate;
         this.cvc = cvc;
-        this.pin=pin;
+        this.pin = pin;
     }
-    public DebitCard(long cardNum, Date expirationDate, int cvc,int pin, Customer owner, Bank managedBy) {
+
+    public DebitCard(long cardNum, Date expirationDate, int cvc, int pin, Account providesAccessTo) {
         this.cardNum = cardNum;
         this.expirationDate = expirationDate;
         this.cvc = cvc;
-        this.pin=pin;
-        this.owner = owner;
-        this.managedBy = managedBy;
+        this.pin = pin;
+        this.providesAccessTo = providesAccessTo;
     }
 
     public long getCardNum() {
@@ -49,22 +48,6 @@ public class DebitCard {
         this.cvc = cvc;
     }
 
-    public Customer getOwner() {
-        return owner;
-    }
-
-    public void setOwner(Customer owner) {
-        this.owner = owner;
-    }
-
-    public Bank getManagedBy() {
-        return managedBy;
-    }
-
-    public void setManagedBy(Bank managedBy) {
-        this.managedBy = managedBy;
-    }
-
     public int getPin() {
         return pin;
     }
@@ -72,4 +55,18 @@ public class DebitCard {
     public void setPin(int pin) {
         this.pin = pin;
     }
+
+    public Account getProvidesAccessTo() {
+        return providesAccessTo;
+    }
+
+    public void setProvidesAccessTo(Account providesAccessTo) {
+        this.providesAccessTo = providesAccessTo;
+    }
+
+    public boolean tryPin(int pin) {
+        return pin == this.pin;
+    }
+
+
 }

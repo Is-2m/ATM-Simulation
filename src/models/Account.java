@@ -3,32 +3,24 @@ package models;
 import java.util.ArrayList;
 
 public class Account {
-    private int accountNum;
+    private long accountNum;
     private double balance;
     private Customer owner;
     private Bank managedBy;
 
-    private ArrayList<DebitCard> cards;
 
     public Account() {
     }
 
-    public Account(int accountNum, double balance, Customer owner, Bank managedBy) {
+    public Account(long accountNum, double balance, Customer owner, Bank managedBy) {
         this.accountNum = accountNum;
         this.balance = balance;
         this.owner = owner;
         this.managedBy = managedBy;
     }
 
-    public Account(int accountNum, double balance, Customer owner, Bank managedBy, ArrayList<DebitCard> cards) {
-        this.accountNum = accountNum;
-        this.balance = balance;
-        this.owner = owner;
-        this.managedBy = managedBy;
-        this.cards = cards;
-    }
 
-    public int getAccountNum() {
+    public long getAccountNum() {
         return accountNum;
     }
 
@@ -38,14 +30,6 @@ public class Account {
 
     public void setOwner(Customer owner) {
         this.owner = owner;
-    }
-
-    public ArrayList<DebitCard> getCards() {
-        return cards;
-    }
-
-    public void setCards(ArrayList<DebitCard> cards) {
-        this.cards = cards;
     }
 
     public double checkBalance() {
@@ -64,9 +48,9 @@ public class Account {
         this.managedBy = managedBy;
     }
 
-    public boolean withdraw(double Amount) {
+    public boolean withdraw(double Amount,double tariff) {
         if (balance >= Amount) {
-            balance -= Amount;
+            balance -= (Amount+tariff);
             return true;
         } else {
             return false;

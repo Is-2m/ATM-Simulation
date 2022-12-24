@@ -19,7 +19,7 @@ public class BankDao {
             ResultSet res = stmt.executeQuery(qry);
             if (!isMyResultSetEmpty(res)) {
                 while (res.next()) {
-                    bank = new Bank(res.getInt(0), res.getString(1));
+                    bank = new Bank(res.getInt("idBank"), res.getString("bankName"));
                 }
             }
             return bank;

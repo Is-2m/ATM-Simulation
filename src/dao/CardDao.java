@@ -1,5 +1,6 @@
 package dao;
 
+import models.Account;
 import models.DebitCard;
 
 import java.sql.*;
@@ -12,7 +13,7 @@ public class CardDao {
     }
 
     public static DebitCard getCard(long cardNum) {
-        String qry = "select * from debitCard where cardNum =" + cardNum + "";
+        String qry = "select * from debitCard where cardNum =" + cardNum;
         Statement stmt = null;
         try {
             DebitCard card = null;
@@ -24,7 +25,8 @@ public class CardDao {
                             res.getLong("cardNum"),
                             res.getDate("expirationDate"),
                             res.getInt("cvc"),
-                            res.getInt("pin")
+                            res.getInt("pin"),
+                             AccountDao.getAccount(res.getLong("accountNum"))
                     );
                 }
             }

@@ -14,11 +14,10 @@ public class NavigationController {
     private static Scene scene;
     private static Parent root;
 
-    public static  void navigateTo(String pathFXML,Node node) throws IOException {
+    public static void navigateTo(String pathFXML, Node node) throws IOException {
         root = FXMLLoader.load(NavigationController.class.getResource(pathFXML));
         stage = (Stage) node.getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
+        stage.getScene().setRoot(root);
         stage.setFullScreenExitHint("");
         stage.setFullScreen(true);
     }

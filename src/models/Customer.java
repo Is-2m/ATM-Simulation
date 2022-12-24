@@ -9,7 +9,6 @@ public class Customer {
     private String name;
     private String address;
     private Date birthDate;
-    private ArrayList<DebitCard> cards;
 
     public Customer() {
     }
@@ -21,13 +20,7 @@ public class Customer {
         this.birthDate = birthDate;
     }
 
-    public Customer(int customerID, String name, String address, Date birthDate, ArrayList<DebitCard> cards) {
-        this.customerID = customerID;
-        this.name = name;
-        this.address = address;
-        this.birthDate = birthDate;
-        this.cards = cards;
-    }
+
 
     public String getName() {
         return name;
@@ -57,11 +50,4 @@ public class Customer {
         return customerID;
     }
 
-    public ArrayList<DebitCard> getCards() {
-        return cards;
-    }
-
-    public void setCards(ArrayList<DebitCard> cards) {
-        this.cards = cards;
-    }
 }

@@ -115,7 +115,7 @@
                                         <Insets left="10.0" />
                                     </FlowPane.margin>
                                     <font>
-                                        <Font name="Arial" size="38.0" />
+                                        <Font name="Poppins Regular" size="38.0" />
                                     </font>
                                 </Label>
                             </children>

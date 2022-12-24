@@ -69,9 +69,9 @@ public class ATM_Transaction {
 
     public boolean update() {
         if (type == TransactionType.WITHDRAWAL) {
-            return sourceAcc.withdraw(amount);
+            return sourceAcc.withdraw(amount,0);
         } else {
-            if (sourceAcc.withdraw(amount)) {
+            if (sourceAcc.withdraw(amount,0)) {
                 destinationAcc.deposit(amount);
                 return true;
             }
