@@ -36,4 +36,17 @@ public class AccountDao {
         }
     }
 
+    public static void updateAccount(Account acc) {
+        try {
+            String sql = "UPDATE account SET" +
+                    " balance = " + acc.checkBalance() +
+                    " WHERE accountNum=" + acc.getAccountNum();
+
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate(sql);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

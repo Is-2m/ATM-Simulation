@@ -1,5 +1,7 @@
 package controllers;
 
+import dao.ATM_TransactionDao;
+import dao.AccountDao;
 import dao.Shared;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import models.ATM_Transaction;
+import models.Account;
 import models.TransactionType;
 
 import java.io.IOException;
@@ -52,7 +55,10 @@ public class ChooseAmountController implements Initializable {
             SimpleDateFormat ft = new SimpleDateFormat("yyMMddhhmmssMs");
             String datetime = ft.format(dNow);
             ATM_Transaction transaction = new ATM_Transaction(datetime, dNow, Shared.getTransactionType(), amount, Shared.getCurrentCard().getProvidesAccessTo());
-            transaction.update();
+            if (transaction.update()) {
+                ATM_TransactionDao.insertTransaction(transaction);
+                AccountDao.updateAccount(transaction.getSourceAcc());
+            }
         } else {
             NavigationController.navigateTo(Shared.WrongAmountScreen, (Node) event.getSource());
         }
