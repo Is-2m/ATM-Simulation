@@ -9,27 +9,27 @@ public class ATM_Transaction {
     private Date transDate;
     private TransactionType type;
     private double amount;
-    private Account sourceAcc;
-    private Account destinationAcc;
+    private DebitCard sourceCard;
+    private DebitCard destinationCard;
 
     public ATM_Transaction() {
     }
 
-    public ATM_Transaction(String transactionId, Date transDate, TransactionType type, double amount, Account sourceAcc, Account destinationAcc) {
+    public ATM_Transaction(String transactionId, Date transDate, TransactionType type, double amount, DebitCard sourceCard, DebitCard destinationCard) {
         this.transactionId = transactionId;
         this.transDate = transDate;
         this.type = type;
         this.amount = amount;
-        this.sourceAcc = sourceAcc;
-        this.destinationAcc = destinationAcc;
+        this.sourceCard = sourceCard;
+        this.destinationCard = destinationCard;
     }
 
-    public ATM_Transaction(String transactionId, Date transDate, TransactionType type, double amount, Account sourceAcc) {
+    public ATM_Transaction(String transactionId, Date transDate, TransactionType type, double amount, DebitCard sourceCard) {
         this.transactionId = transactionId;
         this.transDate = transDate;
         this.type = type;
         this.amount = amount;
-        this.sourceAcc = sourceAcc;
+        this.sourceCard = sourceCard;
     }
 
     public String getTransactionId() {
@@ -61,30 +61,30 @@ public class ATM_Transaction {
         this.amount = amount;
     }
 
-    public Account getSourceAcc() {
-        return sourceAcc;
+    public DebitCard getSourceCard() {
+        return sourceCard;
     }
 
-    public void setSourceAcc(Account sourceAcc) {
-        this.sourceAcc = sourceAcc;
+    public void setSourceCard(DebitCard sourceCard) {
+        this.sourceCard = sourceCard;
     }
 
-    public Account getDestinationAcc() {
-        return destinationAcc;
+    public DebitCard getDestinationCard() {
+        return destinationCard;
     }
 
-    public void setDestinationAcc(Account destinationAcc) {
-        this.destinationAcc = destinationAcc;
+    public void setDestinationCard(DebitCard destinationCard) {
+        this.destinationCard = destinationCard;
     }
 
     public boolean update() {
-        boolean mode = sourceAcc.getManagedBy().getIdBank() == Shared.getCurrentATM().getManagedBy().getIdBank();
+        boolean mode = sourceCard.providesAccessTo().getManagedBy().getIdBank() == Shared.getCurrentATM().getManagedBy().getIdBank();
         double tariff = mode ? 0 : 6;
         if (type == TransactionType.WITHDRAWAL) {
-            return sourceAcc.withdraw(amount, tariff);
+            return sourceCard.providesAccessTo().withdraw(amount, tariff);
         } else {
-            if (sourceAcc.withdraw(amount, tariff)) {
-                destinationAcc.deposit(amount);
+            if (sourceCard.providesAccessTo().withdraw(amount, tariff)) {
+                destinationCard.providesAccessTo().deposit(amount);
                 return true;
             }
             return false;

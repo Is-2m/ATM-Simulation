@@ -39,5 +39,6 @@ public class loginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Shared.customizeCurrentAtm(img_bankLogo, lbl_bankName);
+
     }
 }

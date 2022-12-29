@@ -35,6 +35,8 @@ public abstract class Shared {
     private static ATM currentATM;
     private static DebitCard currentCard;
     private static TransactionType transactionType;
+    private static DebitCard destinationCard;
+    private static ATM_Transaction currentTransaction;
 
     public static ATM getCurrentATM() {
         return currentATM;
@@ -58,9 +60,15 @@ public abstract class Shared {
     }
 
     public static void customizeCurrentAtm(ImageView imgLogo, Label lbl_bankName) {
-        Image logo = new Image(Objects.requireNonNull(Shared.class.getResourceAsStream("..\\assets\\logos\\" + currentATM.getManagedBy().getBankName() + ".png")));
+//        try {
+        System.out.println("src\\assets\\logos\\" + currentATM.getManagedBy().getBankName().replaceAll(" ", "_") + ".png");
+        System.out.println(currentATM.getManagedBy().getBankName());
+        Image logo = new Image(Objects.requireNonNull(Shared.class.getResourceAsStream("..\\assets\\logos\\" + currentATM.getManagedBy().getBankName().replaceAll(" ", "_") + ".png")));
         imgLogo.setImage(logo);
         lbl_bankName.setText(currentATM.getManagedBy().getBankName());
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
 
     public static TransactionType getTransactionType() {
@@ -69,5 +77,21 @@ public abstract class Shared {
 
     public static void setTransactionType(TransactionType transactionType) {
         Shared.transactionType = transactionType;
+    }
+
+    public static DebitCard getDestinationCard() {
+        return destinationCard;
+    }
+
+    public static void setDestinationCard(DebitCard destinationCard) {
+        Shared.destinationCard = destinationCard;
+    }
+
+    public static ATM_Transaction getCurrentTransaction() {
+        return currentTransaction;
+    }
+
+    public static void setCurrentTransaction(ATM_Transaction currentTransaction) {
+        Shared.currentTransaction = currentTransaction;
     }
 }

@@ -21,8 +21,8 @@ public class ATM_TransactionDao {
                     + sdf.format(trans.getTransDate()) + "','"
                     + trans.getType().name() + "',"
                     + trans.getAmount() + ","
-                    + trans.getSourceAcc().getAccountNum() + ","
-                    + (trans.getDestinationAcc() == null ? null : trans.getDestinationAcc().getAccountNum()) + ")";
+                    + trans.getSourceCard().getCardNum() + ","
+                    + (trans.getDestinationCard() == null ? null : trans.getDestinationCard().getCardNum()) + ")";
             Statement stmt = con.createStatement();
             stmt.execute(qry);
         } catch (SQLException e) {

@@ -11,7 +11,6 @@ import java.io.IOException;
 public class NavigationController {
 
     private static Stage stage;
-    private static Scene scene;
     private static Parent root;
 
     public static void navigateTo(String pathFXML, Node node) {

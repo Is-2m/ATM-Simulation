@@ -1,0 +1,110 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receipt</title>
+    <style>
+        @font-face {
+            font-family: poppinsFile;
+            src: url(src/assets/fonts/poppins.ttf);
+        }
+
+        * {
+            font-family: "poppinsFile";
+            margin: 10 10 10 10;
+        }
+
+        html {
+            height: 100%;
+        }
+
+        body {
+            border: 2px dotted black;
+            min-height: 95%;
+        }
+
+        h2 {
+            font-weight: 600;
+        }
+
+        img {
+            padding: 10px;
+        }
+
+        hr {
+            height: 3px !important;
+            max-width: 75% !important;
+            margin: auto;
+            background: transparent;
+            border: none;
+            border-top: solid 3px black;
+        }
+
+        table {
+            align-content: center;
+        }
+
+        .centredItems {
+            text-align: center;
+        }
+
+        .smallText {
+            font-size: 8px;
+        }
+
+        .hidden{
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body>
+<table border="black" width="95%">
+    <tr>
+        <td class="centredItems" rowspan="2"><img width="75px" id="imgLogo" class="" src="bankLogo.png" alt="">
+        </td>
+        <td class="centredItems" rowspan="2" colspan="2">
+            <h4 id="bankName">Bank Name</h4>
+        </td>
+        <td id="txtDate" colspan="2" class="smallText">Date: {Tarikh}</td>
+    </tr>
+    <tr>
+        <td id="txt_atmID" valign="top" colspan="2" class="smallText">ATM ID: {ATM ID}</td>
+    </tr>
+</table>
+
+<hr>
+<!-- <hr class="text-dark "> -->
+<table width="95%" cellpadding="10" border="black" align="center">
+    <tr>
+        <th>Card Number :</th>
+        <td class="centredItems" id="txtCardNum">{tdlace Holder}</td>
+    </tr>
+    <tr>
+        <th>Transaction ID :</th>
+        <td class="centredItems" id="txtTransID">{Transaction ID}</td>
+    </tr>
+    <tr>
+        <th>Transaction Tythe :</th>
+        <td class="centredItems" id="txtTransType">{Transaction Tytde}</td>
+    </tr>
+    <tr>
+        <th>Amount :</th>
+        <td class="centredItems" id="txtAmount">{Amount}</td>
+    </tr>
+    <tr id="row_TransferredTo">
+        <th>Transferred To :</th>
+        <td class="centredItems" id="txtTransferredTo">{Transferred} To</td>
+    </tr>
+    <tr id="row_Balance">
+        <th>Remaining Balance :</th>
+        <td class="centredItems" id="txtBalance">{Remaining Balance}</td>
+    </tr>
+</table>
+
+</body>
+
+</html>

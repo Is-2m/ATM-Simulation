@@ -1,13 +1,24 @@
 package controllers;
 
+import com.itextpdf.html2pdf.HtmlConverter;
 import dao.Shared;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import models.ATM_Transaction;
+import models.TransactionType;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 public class PrintReceiptController implements Initializable {
@@ -26,4 +37,69 @@ public class PrintReceiptController implements Initializable {
         Shared.customizeCurrentAtm(img_bankLogo, lbl_bankName);
 
     }
+
+    public void btn_yes_Clicked(ActionEvent event) {
+        String destCard =
+                Shared.getCurrentTransaction().getDestinationCard() == null ? "0" :
+                        "#### #### #### " + String.valueOf(Shared.getCurrentTransaction().getDestinationCard().getCardNum()).substring(12, 16);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        printReceipt(
+                "src\\assets\\logos\\" + Shared.getCurrentATM().getManagedBy().getBankName().replaceAll(" ","_") + ".png",
+                Shared.getCurrentATM().getManagedBy().getBankName(),
+                sdf.format(Shared.getCurrentTransaction().getTransDate()),
+                String.valueOf(Shared.getCurrentATM().getIdATM()),
+                "#### #### #### " + String.valueOf(Shared.getCurrentCard().getCardNum()).substring(12, 16),
+                Shared.getCurrentTransaction().getTransactionId(),
+                Shared.getCurrentTransaction().getType().toString(),
+                String.valueOf(Shared.getCurrentTransaction().getAmount()),
+                destCard,
+                String.valueOf(Shared.getCurrentTransaction().getSourceCard().providesAccessTo().checkBalance())
+        );
+    }
+
+    private void printReceipt(
+            String imgLogo,
+            String bankName,
+            String txtDate,
+            String txt_atmID,
+            String txtCardNum,
+            String txtTransID,
+            String txtTransType,
+            String txtAmount,
+            String txtTransferredTo,
+            String txtBalance
+    ) {
+        try {
+            File f = new File("src/printing/receipt.html");
+            Document doc = Jsoup.parse(f);
+            System.out.println(img_bankLogo.getImage().getUrl());
+            doc.getElementById("imgLogo").attr("src", imgLogo);
+            doc.getElementById("bankName").text(bankName);
+            doc.getElementById("txtDate").text("Date: "+txtDate);
+            doc.getElementById("txt_atmID").text("ATM ID: "+txt_atmID);
+            doc.getElementById("txtCardNum").text(txtCardNum);
+            doc.getElementById("txtTransID").text(txtTransID);
+            doc.getElementById("txtTransType").text(txtTransType);
+            doc.getElementById("txtAmount").text(txtAmount);
+            doc.getElementById("txtTransferredTo").text(txtTransferredTo);
+            doc.getElementById("txtBalance").text(txtBalance);
+            if (Shared.getCurrentTransaction().getType() != TransactionType.TRANSFER) {
+                doc.getElementById("row_TransferredTo").addClass("hidden");
+            }
+            if (Shared.getCurrentATM().getManagedBy().getIdBank() !=
+                    Shared.getCurrentCard().providesAccessTo().getManagedBy().getIdBank()) {
+                doc.getElementById("row_Balance").addClass("hidden");
+
+            }
+            FileOutputStream outputStream = new FileOutputStream("receipt_" + txtTransID + ".pdf");
+            HtmlConverter.convertToPdf(doc.html(), outputStream);
+            outputStream.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
 }

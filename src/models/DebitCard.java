@@ -1,6 +1,5 @@
 package models;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 public class DebitCard {
@@ -56,7 +55,7 @@ public class DebitCard {
         this.pin = pin;
     }
 
-    public Account getProvidesAccessTo() {
+    public Account providesAccessTo() {
         return providesAccessTo;
     }
 
