@@ -125,7 +125,7 @@
                                 <FlowPane prefHeight="200.0" prefWidth="200.0" />
                                 <FlowPane GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                                     <children>
-                                        <Button fx:id="btn_no" mnemonicParsing="false" prefHeight="57.0" prefWidth="195.0" styleClass="red_button" text="NO">
+                                        <Button fx:id="btn_no" mnemonicParsing="false" onAction="#btn_no_Clicked" prefHeight="57.0" prefWidth="195.0" styleClass="red_button" text="NO">
                                             <font>
                                                 <Font name="System Bold" size="21.0" />
                                             </font>

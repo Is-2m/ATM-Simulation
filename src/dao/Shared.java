@@ -20,7 +20,12 @@ public abstract class Shared {
     public static String PrintReceiptScreen = "../ui/PrintReceiptScreen.fxml";
     public static String CardExpiredScreen = "../ui/CardExpiredScreen.fxml";
     public static String WrongAmountScreen = "../ui/WrongAmountScreen.fxml";
-    //    public static String CardInfoScreen="../ui/CardInfoScreen.fxml";
+    public static String ShowBalanceScreen = "../ui/ShowBalanceScreen.fxml";
+    public static String TransferToScreen = "../ui/TransferToScreen.fxml";
+    public static String TakeUrMoneyScreen = "../ui/TakeUrMoneyScreen.fxml";
+    public static String ThanksForVisitScreen = "../ui/ThanksForVisitScreen.fxml";
+    public static String ChangePinScreen = "../ui/ChangePinScreen.fxml";
+    public static String DoneUpdatingScreen = "../ui/DoneUpdatingScreen.fxml";
     static Connection con;
 
     static {
@@ -34,7 +39,7 @@ public abstract class Shared {
 
     private static ATM currentATM;
     private static DebitCard currentCard;
-    private static TransactionType transactionType;
+    private static TransactionType currentTransactionType;
     private static DebitCard destinationCard;
     private static ATM_Transaction currentTransaction;
 
@@ -71,12 +76,12 @@ public abstract class Shared {
 //        }
     }
 
-    public static TransactionType getTransactionType() {
-        return transactionType;
+    public static TransactionType getCurrentTransactionType() {
+        return currentTransactionType;
     }
 
-    public static void setTransactionType(TransactionType transactionType) {
-        Shared.transactionType = transactionType;
+    public static void setCurrentTransactionType(TransactionType transactionType) {
+        Shared.currentTransactionType = transactionType;
     }
 
     public static DebitCard getDestinationCard() {

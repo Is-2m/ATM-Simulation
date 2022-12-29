@@ -12,9 +12,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import models.ATM_Transaction;
-import models.Account;
-import models.DebitCard;
-import models.TransactionType;
 
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -55,26 +52,14 @@ public class ChooseAmountController implements Initializable {
             Date dNow = new Date();
             SimpleDateFormat ft = new SimpleDateFormat("yyMMddhhmmssMs");
             String datetime = ft.format(dNow);
-
-            if (Shared.getTransactionType() == TransactionType.WITHDRAWAL) {
-                ATM_Transaction transaction = new ATM_Transaction(datetime, dNow, Shared.getTransactionType(), amount, Shared.getCurrentCard());
-                if (transaction.update()) {
-                    ATM_TransactionDao.insertTransaction(transaction);
-                    AccountDao.updateAccount(transaction.getSourceCard().providesAccessTo());
-                    Shared.setCurrentTransaction(transaction);
-                    NavigationController.navigateTo(Shared.PrintReceiptScreen,(Node) event.getSource());
-                }
-            } else if (Shared.getTransactionType() == TransactionType.TRANSFER) {
-                ATM_Transaction transaction = new ATM_Transaction(datetime, dNow, Shared.getTransactionType(), amount, Shared.getCurrentCard(), Shared.getDestinationCard());
-                if (transaction.update()) {
-                    ATM_TransactionDao.insertTransaction(transaction);
-                    AccountDao.updateAccount(transaction.getSourceCard().providesAccessTo());
-                    AccountDao.updateAccount(transaction.getDestinationCard().providesAccessTo());
-                    Shared.setCurrentTransaction(transaction);
-                    NavigationController.navigateTo(Shared.PrintReceiptScreen,(Node) event.getSource());
-
-                }
+            ATM_Transaction transaction = new ATM_Transaction(datetime, dNow, Shared.getCurrentTransactionType(), amount, Shared.getCurrentCard());
+            if (transaction.update()) {
+                ATM_TransactionDao.insertTransaction(transaction);
+                AccountDao.updateAccount(transaction.getSourceCard().providesAccessTo());
+                Shared.setCurrentTransaction(transaction);
+                NavigationController.navigateTo(Shared.PrintReceiptScreen, (Node) event.getSource());
             }
+
         } else {
             NavigationController.navigateTo(Shared.WrongAmountScreen, (Node) event.getSource());
         }

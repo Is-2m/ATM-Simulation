@@ -16,7 +16,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1360.0" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CardExpiredController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1360.0" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ThanksForVisitController">
     <left>
         <GridPane maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="356.0" prefWidth="100.0" BorderPane.alignment="CENTER">
             <columnConstraints>
@@ -110,39 +110,32 @@
                             </children>
                         </FlowPane>
                     </top>
-               <center>
-                  <GridPane BorderPane.alignment="CENTER">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <Label styleClass="labels" text="PLEASE RE-CHECK THE CARD'S INFOS AND TRY AGAIN LATER" textFill="#f20000" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                           <font>
-                              <Font name="Poppins SemiBold" size="24.0" />
-                           </font>
-                        </Label>
-                        <ImageView fitHeight="263.0" fitWidth="317.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.rowSpan="2" GridPane.valignment="TOP">
-                           <image>
-                              <Image url="@../assets/images/card_expired.png" />
-                           </image>
-                        </ImageView>
-                        <Button mnemonicParsing="false" onAction="#btn_Back_Clicked" prefHeight="70.0" prefWidth="234.0" styleClass="red_button" text="BACK" GridPane.rowIndex="3">
-                           <GridPane.margin>
-                              <Insets left="20.0" />
-                           </GridPane.margin>
-                           <font>
-                              <Font name="Poppins Regular" size="30.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </GridPane>
-               </center>
+                    <center>
+                        <GridPane BorderPane.alignment="CENTER">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="76.0" minHeight="10.0" prefHeight="76.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="264.0" minHeight="10.0" prefHeight="201.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="191.0" minHeight="10.0" prefHeight="147.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                            <children>
+                                <Label styleClass="labels" text="THANKS FOR YOUR VISIT AND HAVE A GOOD DAY!" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                    <font>
+                                        <Font name="Poppins SemiBold" size="30.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <BorderPane.margin>
+                                <Insets />
+                            </BorderPane.margin>
+                        </GridPane>
+                    </center>
                 </BorderPane>
             </children>
             <BorderPane.margin>

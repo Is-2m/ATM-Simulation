@@ -37,4 +37,17 @@ public class CardDao {
         }
     }
 
+    public static void updateCard(DebitCard card){
+        try {
+            String sql = "UPDATE debitCard SET" +
+                    " pin = " + card.getPin() +
+                    " WHERE cardNum=" + card.getCardNum();
+
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate(sql);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

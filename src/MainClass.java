@@ -26,7 +26,9 @@ public class MainClass extends Application {
             Parent root = FXMLLoader.load(getClass().getResource("ui/LoginScreen.fxml"));
             stage.setTitle("ATM Simulation");
             stage.setScene(new Scene(root));
+            stage.setFullScreenExitHint("Please Press Esc To Exit The Simulation And Close The App");
             stage.setFullScreen(true);
+
             stage.fullScreenProperty().addListener((ChangeListener) (o, oldVal, newVal) -> {
                 if (!(boolean) newVal) {
                     Platform.exit();

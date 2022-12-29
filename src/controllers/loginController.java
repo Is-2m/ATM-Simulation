@@ -24,10 +24,6 @@ public class loginController implements Initializable {
     ImageView img_bankLogo;
     @FXML
     Label lbl_bankName;
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
     public void logWithCard(ActionEvent e) throws IOException {
         NavigationController.navigateTo(Shared.CardInfoScreen, ((Node) e.getSource()));
     }
@@ -39,6 +35,5 @@ public class loginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Shared.customizeCurrentAtm(img_bankLogo, lbl_bankName);
-
     }
 }

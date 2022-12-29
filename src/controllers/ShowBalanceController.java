@@ -4,31 +4,29 @@ import dao.Shared;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javafx.scene.Node;
-import models.TransactionType;
+public class ShowBalanceController implements Initializable {
 
-public class CardExpiredController implements Initializable {
     @FXML
     ImageView img_bankLogo;
     @FXML
     Label lbl_bankName;
+    @FXML
+    Label lbl_balance;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Shared.customizeCurrentAtm(img_bankLogo, lbl_bankName);
+        lbl_balance.setText(String.valueOf(Shared.getCurrentCard().providesAccessTo().checkBalance())+" DH");
     }
 
     public void btn_Back_Clicked(ActionEvent event) {
-        if (Shared.getCurrentTransactionType() == TransactionType.WITHDRAWAL) {
-            NavigationController.navigateTo(Shared.OperationChoosingScreen, (Node) event.getSource());
-        } else {
-            NavigationController.navigateTo(Shared.LoginScreen, (Node) event.getSource());
-        }
+        NavigationController.navigateTo(Shared.OperationChoosingScreen, (Node) event.getSource());
     }
 }

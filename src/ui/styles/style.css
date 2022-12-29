@@ -73,3 +73,7 @@
     -fx-font-family: "Poppins Regular";
     -fx-font-weight: bold;
 }
+.redBorder {
+    -fx-border-width: 5px;
+    -fx-border-color: #ff0000;
+}
