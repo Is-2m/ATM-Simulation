@@ -39,27 +39,48 @@ public class PrintReceiptController implements Initializable {
     }
 
     public void btn_no_Clicked(ActionEvent event) {
-        NavigationController.navigateTo(Shared.TakeUrMoneyScreen, (Node) event.getSource());
+
+        if (Shared.getCurrentTransactionType() == TransactionType.WITHDRAWAL || Shared.getCurrentTransactionType() == TransactionType.CARDLESS) {
+            NavigationController.navigateTo(Shared.TakeUrMoneyScreen, (Node) event.getSource());
+        } else if (Shared.getCurrentTransactionType() == TransactionType.TRANSFER) {
+            NavigationController.navigateTo(Shared.ThanksForVisitScreen, (Node) event.getSource());
+        }
     }
 
     public void btn_yes_Clicked(ActionEvent event) {
         String destCard =
-                Shared.getCurrentTransaction().getDestinationCard() == null ? "0" :
+                Shared.getCurrentTransaction().getDestinationCard() == null ? "" :
                         "#### #### #### " + String.valueOf(Shared.getCurrentTransaction().getDestinationCard().getCardNum()).substring(12, 16);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        printReceipt(
-                "src\\assets\\logos\\" + Shared.getCurrentATM().getManagedBy().getBankName().replaceAll(" ", "_") + ".png",
-                Shared.getCurrentATM().getManagedBy().getBankName(),
-                sdf.format(Shared.getCurrentTransaction().getTransDate()),
-                String.valueOf(Shared.getCurrentATM().getIdATM()),
-                "#### #### #### " + String.valueOf(Shared.getCurrentCard().getCardNum()).substring(12, 16),
-                Shared.getCurrentTransaction().getTransactionId(),
-                Shared.getCurrentTransaction().getType().toString(),
-                String.valueOf(Shared.getCurrentTransaction().getAmount()),
-                destCard,
-                String.valueOf(Shared.getCurrentTransaction().getSourceCard().providesAccessTo().checkBalance())
-        );
-        if (Shared.getCurrentTransactionType() == TransactionType.WITHDRAWAL) {
+        if (Shared.getCurrentTransactionType() == TransactionType.CARDLESS) {
+            printReceipt(
+                    "src\\assets\\logos\\" + Shared.getCurrentATM().getManagedBy().getBankName().replaceAll(" ", "_") + ".png",
+                    Shared.getCurrentATM().getManagedBy().getBankName(),
+                    sdf.format(Shared.getCurrentTransaction().getTransDate()),
+                    String.valueOf(Shared.getCurrentATM().getIdATM()),
+                    "",
+                    Shared.getCurrentTransaction().getTransactionId(),
+                    Shared.getCurrentTransaction().getType().toString(),
+                    String.valueOf(Shared.getCurrentTransaction().getAmount()),
+                    "",
+                    "",
+                    String.valueOf(Shared.getCurrentCardless().getReferenceID()),
+                    Shared.getCurrentCardless().getSender());
+        } else {
+            printReceipt(
+                    "src\\assets\\logos\\" + Shared.getCurrentATM().getManagedBy().getBankName().replaceAll(" ", "_") + ".png",
+                    Shared.getCurrentATM().getManagedBy().getBankName(),
+                    sdf.format(Shared.getCurrentTransaction().getTransDate()),
+                    String.valueOf(Shared.getCurrentATM().getIdATM()),
+                    "#### #### #### " + String.valueOf(Shared.getCurrentCard().getCardNum()).substring(12, 16),
+                    Shared.getCurrentTransaction().getTransactionId(),
+                    Shared.getCurrentTransaction().getType().toString(),
+                    String.valueOf(Shared.getCurrentTransaction().getAmount()),
+                    destCard,
+                    String.valueOf(Shared.getCurrentTransaction().getSourceCard().providesAccessTo().checkBalance()), "", ""
+            );
+        }
+        if (Shared.getCurrentTransactionType() == TransactionType.WITHDRAWAL || Shared.getCurrentTransactionType() == TransactionType.CARDLESS) {
             NavigationController.navigateTo(Shared.TakeUrMoneyScreen, (Node) event.getSource());
         } else if (Shared.getCurrentTransactionType() == TransactionType.TRANSFER) {
             NavigationController.navigateTo(Shared.ThanksForVisitScreen, (Node) event.getSource());
@@ -76,7 +97,9 @@ public class PrintReceiptController implements Initializable {
             String txtTransType,
             String txtAmount,
             String txtTransferredTo,
-            String txtBalance
+            String txtBalance,
+            String txtRefID,
+            String txtSender
     ) {
         try {
             File f = new File("src/printing/receipt.html");
@@ -90,16 +113,33 @@ public class PrintReceiptController implements Initializable {
             doc.getElementById("txtCardNum").text(txtCardNum);
             doc.getElementById("txtTransID").text(txtTransID);
             doc.getElementById("txtTransType").text(txtTransType);
-            doc.getElementById("txtAmount").text(txtAmount+" DH");
+            doc.getElementById("txtAmount").text(txtAmount + " DH");
             doc.getElementById("txtTransferredTo").text(txtTransferredTo);
-            doc.getElementById("txtBalance").text(txtBalance+" DH");
-            if (Shared.getCurrentTransaction().getType() != TransactionType.TRANSFER) {
-                doc.getElementById("row_TransferredTo").addClass("hidden");
-            }
-            if (Shared.getCurrentATM().getManagedBy().getIdBank() !=
-                    Shared.getCurrentCard().providesAccessTo().getManagedBy().getIdBank()) {
-                doc.getElementById("row_Balance").addClass("hidden");
+            doc.getElementById("txtBalance").text(txtBalance + " DH");
+            doc.getElementById("txtRefID").text(txtRefID);
+            doc.getElementById("txtSender").text(txtSender);
+            if (Shared.getCurrentTransactionType() == TransactionType.TRANSFER) {
+                doc.getElementById("row_Sender").addClass("hidden");
+                doc.getElementById("row_RefID").addClass("hidden");
+                if (Shared.getCurrentATM().getManagedBy().getIdBank() !=
+                        Shared.getCurrentCard().providesAccessTo().getManagedBy().getIdBank()) {
+                    doc.getElementById("row_Balance").addClass("hidden");
 
+                }
+            } else if (Shared.getCurrentTransaction().getType() == TransactionType.WITHDRAWAL) {
+                doc.getElementById("row_TransferredTo").addClass("hidden");
+                doc.getElementById("row_Sender").addClass("hidden");
+                doc.getElementById("row_RefID").addClass("hidden");
+                if (Shared.getCurrentATM().getManagedBy().getIdBank() !=
+                        Shared.getCurrentCard().providesAccessTo().getManagedBy().getIdBank()) {
+                    doc.getElementById("row_Balance").addClass("hidden");
+
+                }
+            } else if (Shared.getCurrentTransaction().getType() == TransactionType.CARDLESS) {
+                doc.getElementById("row_TransferredTo").addClass("hidden");
+                doc.getElementById("row_CardNum").addClass("hidden");
+                doc.getElementById("row_Balance").addClass("hidden");
+                doc.getElementById("row_Balance").addClass("hidden");
             }
             FileOutputStream outputStream = new FileOutputStream(of);
             HtmlConverter.convertToPdf(doc.html(), outputStream);

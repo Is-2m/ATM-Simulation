@@ -20,11 +20,11 @@ public class ThanksForVisitController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Shared.customizeCurrentAtm(img_bankLogo, lbl_bankName);
-
-        Shared.setCurrentTransactionType(null);
         Shared.setCurrentTransaction(null);
-        Shared.setCurrentCard(null);
         Shared.setDestinationCard(null);
+        Shared.setCurrentCard(null);
+        Shared.setCurrentTransactionType(null);
+        Shared.setCurrentCardless(null);
 
         new java.util.Timer().schedule(
                 new java.util.TimerTask() {

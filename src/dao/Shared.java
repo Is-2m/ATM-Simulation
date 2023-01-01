@@ -26,6 +26,10 @@ public abstract class Shared {
     public static String ThanksForVisitScreen = "../ui/ThanksForVisitScreen.fxml";
     public static String ChangePinScreen = "../ui/ChangePinScreen.fxml";
     public static String DoneUpdatingScreen = "../ui/DoneUpdatingScreen.fxml";
+    public static String TransferRefScreen = "../ui/TransferRefScreen.fxml";
+    public static String TransferPinScreen = "../ui/TransferPinScreen.fxml";
+    public static String ReCheckScreen = "../ui/ReCheckScreen.fxml";
+    public static String ConfirmAmountScreen = "../ui/ConfirmAmountScreen.fxml";
     static Connection con;
 
     static {
@@ -42,6 +46,7 @@ public abstract class Shared {
     private static TransactionType currentTransactionType;
     private static DebitCard destinationCard;
     private static ATM_Transaction currentTransaction;
+    private static CardlessWithdrawal currentCardless;
 
     public static ATM getCurrentATM() {
         return currentATM;
@@ -98,5 +103,13 @@ public abstract class Shared {
 
     public static void setCurrentTransaction(ATM_Transaction currentTransaction) {
         Shared.currentTransaction = currentTransaction;
+    }
+
+    public static CardlessWithdrawal getCurrentCardless() {
+        return currentCardless;
+    }
+
+    public static void setCurrentCardless(CardlessWithdrawal currentCardless) {
+        Shared.currentCardless = currentCardless;
     }
 }

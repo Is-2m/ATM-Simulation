@@ -1,5 +1,6 @@
 package controllers;
 
+import dao.CardlessWithdrawalDao;
 import dao.Shared;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,10 +20,6 @@ public class TakeUrMoneyController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Shared.customizeCurrentAtm(img_bankLogo, lbl_bankName);
-        Shared.setCurrentTransaction(null);
-        Shared.setDestinationCard(null);
-        Shared.setCurrentCard(null);
-        Shared.setCurrentTransactionType(null);
         new java.util.Timer().schedule(
                 new java.util.TimerTask() {
                     @Override

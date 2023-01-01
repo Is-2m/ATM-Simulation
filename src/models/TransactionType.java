@@ -1,5 +1,5 @@
 package models;
 
 public enum TransactionType {
-    WITHDRAWAL,TRANSFER
+    WITHDRAWAL,TRANSFER,CARDLESS
 }

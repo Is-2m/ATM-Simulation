@@ -18,7 +18,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1360.0" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CardInfoController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1360.0" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TransferRefController">
     <left>
         <GridPane maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="356.0" prefWidth="100.0" BorderPane.alignment="CENTER">
             <columnConstraints>
@@ -123,7 +123,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <TextField fx:id="txt_CardNum" alignment="CENTER" onKeyReleased="#keyReleased" promptText="XXXX XXXX XXXX XXXX" styleClass="custom_text_input" GridPane.rowIndex="1">
+                        <TextField fx:id="txt_RefID" alignment="CENTER" onKeyReleased="#keyReleased" promptText="X XXX XXX XXX" styleClass="custom_text_input" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets left="240.0" right="240.0" />
                            </GridPane.margin>
@@ -169,20 +169,12 @@
       
                                      <FlowPane prefHeight="102.0" prefWidth="1083.0">
                                    <children>
-                                       <ImageView fitHeight="94.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
-                                           <image>
-                                               <Image url="@../assets/images/lock.png" />
-                                           </image>
-                                           <FlowPane.margin>
-                                               <Insets left="320.0" right="10.0" top="10.0" />
-                                           </FlowPane.margin>
-                                       </ImageView>
-                                    <Label styleClass="labels" text="PLEASE INSERT YOUR CARD NUMBER">
+                                    <Label styleClass="labels" text="PLEASE INSERT YOUR TRANSFER REFERENCE NUMBER">
                                        <font>
                                           <Font name="Poppins Regular" size="20.0" />
                                        </font>
                                        <FlowPane.margin>
-                                          <Insets top="30.0" />
+                                          <Insets left="290.0" top="30.0" />
                                        </FlowPane.margin>
                                     </Label>
                                    </children>

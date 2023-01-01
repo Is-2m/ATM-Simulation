@@ -1,6 +1,7 @@
 package controllers;
 
 import dao.CardDao;
+import dao.CardlessWithdrawalDao;
 import dao.Shared;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,37 +11,32 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import models.CardlessWithdrawal;
 import models.DebitCard;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CardPinController implements Initializable {
+public class TransferRefController implements Initializable {
     @FXML
     ImageView img_bankLogo;
     @FXML
     Label lbl_bankName;
     @FXML
-    TextField txt_PinCode;
-    @FXML
     Label lbl_tryAgain;
+    @FXML
+    TextField txt_RefID;
     int attempts = 0;
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        Shared.customizeCurrentAtm(img_bankLogo, lbl_bankName);
-
-    }
 
     public void keyReleased(KeyEvent e) {
         if (!e.getCode().isDigitKey()) {
-            txt_PinCode.setText(txt_PinCode.getText().replaceAll("[^\\d]", ""));
+            txt_RefID.setText(txt_RefID.getText().replaceAll("[^\\d]", ""));
         }
-        if (txt_PinCode.getLength() > 4) {
-            txt_PinCode.setText(txt_PinCode.getText().substring(0, 4));
+        if (txt_RefID.getLength() > 10) {
+            txt_RefID.setText(txt_RefID.getText().substring(0, 10));
         }
-        txt_PinCode.positionCaret(txt_PinCode.getLength());
+        txt_RefID.positionCaret(txt_RefID.getLength());
     }
 
     public void btn_cancel_Clicked(ActionEvent e) throws IOException {
@@ -48,23 +44,28 @@ public class CardPinController implements Initializable {
     }
 
     public void btn_next_Clicked(ActionEvent event) {
-
         try {
             while (attempts < 3) {
-                int pin = Integer.parseInt(txt_PinCode.getText());
-                if (Shared.getCurrentCard().tryPin(pin)) {
-                    NavigationController.navigateTo(Shared.OperationChoosingScreen, (Node) event.getSource());
+                CardlessWithdrawal cardless = CardlessWithdrawalDao.getCardless(Integer.valueOf(txt_RefID.getText()));
+                if (cardless != null) {
+                    Shared.setCurrentCardless(cardless);
+                    NavigationController.navigateTo(Shared.TransferPinScreen, ((Node) event.getSource()));
                 } else {
                     lbl_tryAgain.setVisible(true);
-                    txt_PinCode.setText("");
+                    txt_RefID.setText("");
                 }
                 attempts++;
             }
-            NavigationController.navigateTo(Shared.CardExpiredScreen, (Node) event.getSource());
+            NavigationController.navigateTo(Shared.ReCheckScreen, (Node) event.getSource());
 
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Shared.customizeCurrentAtm(img_bankLogo, lbl_bankName);
 
     }
 }

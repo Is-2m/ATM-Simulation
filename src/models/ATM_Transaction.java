@@ -11,8 +11,19 @@ public class ATM_Transaction {
     private double amount;
     private DebitCard sourceCard;
     private DebitCard destinationCard;
+    private int referenceID = 0;
 
     public ATM_Transaction() {
+    }
+
+    public ATM_Transaction(String transactionId, Date transDate, TransactionType type, double amount, DebitCard sourceCard, DebitCard destinationCard, int referenceID) {
+        this.transactionId = transactionId;
+        this.transDate = transDate;
+        this.type = type;
+        this.amount = amount;
+        this.sourceCard = sourceCard;
+        this.destinationCard = destinationCard;
+        this.referenceID = referenceID;
     }
 
     public ATM_Transaction(String transactionId, Date transDate, TransactionType type, double amount, DebitCard sourceCard, DebitCard destinationCard) {
@@ -41,9 +52,6 @@ public class ATM_Transaction {
         return transDate;
     }
 
-    public void setTransDate(Date transDate) {
-        this.transDate = transDate;
-    }
 
     public TransactionType getType() {
         return type;
@@ -65,17 +73,11 @@ public class ATM_Transaction {
         return sourceCard;
     }
 
-    public void setSourceCard(DebitCard sourceCard) {
-        this.sourceCard = sourceCard;
-    }
 
     public DebitCard getDestinationCard() {
         return destinationCard;
     }
 
-    public void setDestinationCard(DebitCard destinationCard) {
-        this.destinationCard = destinationCard;
-    }
 
     public boolean update() {
         boolean mode = sourceCard.providesAccessTo().getManagedBy().getIdBank() == Shared.getCurrentATM().getManagedBy().getIdBank();
@@ -90,4 +92,9 @@ public class ATM_Transaction {
             return false;
         }
     }
+
+    public int getReferenceID() {
+        return referenceID;
+    }
+
 }

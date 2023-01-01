@@ -1,6 +1,5 @@
 package controllers;
 
-import dao.CardDao;
 import dao.Shared;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,13 +9,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
-import models.DebitCard;
+import models.TransactionType;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CardPinController implements Initializable {
+public class TransferPinController implements Initializable {
     @FXML
     ImageView img_bankLogo;
     @FXML
@@ -30,7 +29,6 @@ public class CardPinController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Shared.customizeCurrentAtm(img_bankLogo, lbl_bankName);
-
     }
 
     public void keyReleased(KeyEvent e) {
@@ -52,15 +50,16 @@ public class CardPinController implements Initializable {
         try {
             while (attempts < 3) {
                 int pin = Integer.parseInt(txt_PinCode.getText());
-                if (Shared.getCurrentCard().tryPin(pin)) {
-                    NavigationController.navigateTo(Shared.OperationChoosingScreen, (Node) event.getSource());
+                if (Shared.getCurrentCardless().getPinCode() == pin) {
+                    Shared.setCurrentTransactionType(TransactionType.CARDLESS);
+                    NavigationController.navigateTo(Shared.ConfirmAmountScreen, (Node) event.getSource());
                 } else {
                     lbl_tryAgain.setVisible(true);
                     txt_PinCode.setText("");
                 }
                 attempts++;
             }
-            NavigationController.navigateTo(Shared.CardExpiredScreen, (Node) event.getSource());
+            NavigationController.navigateTo(Shared.LoginScreen, (Node) event.getSource());
 
         } catch (Exception ex) {
             ex.printStackTrace();

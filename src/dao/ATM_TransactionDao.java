@@ -16,13 +16,14 @@ public class ATM_TransactionDao {
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         try {
-            String qry = "INSERT INTO atm_transaction(transactionID, transactionDate, type, amount, sourceAcc, destinationAcc) " +
-                    "VALUES (" + trans.getTransactionId() + ",'"
+            String qry = "INSERT INTO atm_transaction(transactionID, transactionDate, type, amount, sourceAcc, destinationAcc,referenceID) " +
+                    "VALUES ('" + trans.getTransactionId() + "','"
                     + sdf.format(trans.getTransDate()) + "','"
                     + trans.getType().name() + "',"
                     + trans.getAmount() + ","
-                    + trans.getSourceCard().getCardNum() + ","
-                    + (trans.getDestinationCard() == null ? null : trans.getDestinationCard().getCardNum()) + ")";
+                    + (trans.getSourceCard() == null ? null : trans.getSourceCard().getCardNum()) + ","
+                    + (trans.getDestinationCard() == null ? null : trans.getDestinationCard().getCardNum()) + ","
+                    + (trans.getReferenceID() == 0 ? null : trans.getReferenceID()) + ")";
             Statement stmt = con.createStatement();
             stmt.execute(qry);
         } catch (SQLException e) {
