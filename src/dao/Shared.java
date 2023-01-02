@@ -9,7 +9,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Objects;
 
 public abstract class Shared {
     public static String CardInfoScreen = "../ui/CardInfoScreen.fxml";
@@ -71,9 +70,7 @@ public abstract class Shared {
 
     public static void customizeCurrentAtm(ImageView imgLogo, Label lbl_bankName) {
 //        try {
-        System.out.println("src\\assets\\logos\\" + currentATM.getManagedBy().getBankName().replaceAll(" ", "_") + ".png");
-        System.out.println(currentATM.getManagedBy().getBankName());
-        Image logo = new Image(Objects.requireNonNull(Shared.class.getResourceAsStream("..\\assets\\logos\\" + currentATM.getManagedBy().getBankName().replaceAll(" ", "_") + ".png")));
+        Image logo = new Image(Shared.class.getResourceAsStream("..\\assets\\logos\\" + currentATM.getManagedBy().getBankName().replaceAll(" ", "_") + ".png"));
         imgLogo.setImage(logo);
         lbl_bankName.setText(currentATM.getManagedBy().getBankName());
 //        } catch (Exception e) {
@@ -89,9 +86,6 @@ public abstract class Shared {
         Shared.currentTransactionType = transactionType;
     }
 
-    public static DebitCard getDestinationCard() {
-        return destinationCard;
-    }
 
     public static void setDestinationCard(DebitCard destinationCard) {
         Shared.destinationCard = destinationCard;

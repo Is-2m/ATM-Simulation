@@ -9,10 +9,9 @@ import javafx.scene.Scene;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.Objects;
 
-public class MainClass extends Application {
+public class MainApp extends Application {
 
     public static void main(String[] args) {
         launch(args);
@@ -23,10 +22,10 @@ public class MainClass extends Application {
         try {
             initialise();
             Font.loadFont(getClass().getResourceAsStream("./assets/fonts/poppins.ttf"), 16);
-            Parent root = FXMLLoader.load(getClass().getResource("ui/LoginScreen.fxml"));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ui/LoginScreen.fxml")));
             stage.setTitle("ATM Simulation");
             stage.setScene(new Scene(root));
-            stage.setFullScreenExitHint("Please Press Esc To Exit The Simulation And Close The App");
+            stage.setFullScreenExitHint("Please Press 'Esc' To Exit The Simulation And Close The App");
             stage.setFullScreen(true);
 
             stage.fullScreenProperty().addListener((ChangeListener) (o, oldVal, newVal) -> {
@@ -34,6 +33,7 @@ public class MainClass extends Application {
                     Platform.exit();
                 }
             });
+
 //        stage.setResizable(false);
             stage.show();
 

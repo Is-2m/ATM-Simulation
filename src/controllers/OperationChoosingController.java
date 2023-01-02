@@ -36,7 +36,7 @@ public class OperationChoosingController implements Initializable {
     }
 
     public void btn_cancel_Clicked(ActionEvent event) {
-        NavigationController.navigateTo(Shared.LoginScreen, (Node) event.getSource());
+        NavigationController.navigateTo(Shared.ThanksForVisitScreen, (Node) event.getSource());
 
     }
 
