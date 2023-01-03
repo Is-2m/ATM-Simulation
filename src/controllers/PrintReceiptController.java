@@ -17,6 +17,7 @@ import java.awt.*;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
@@ -54,7 +55,7 @@ public class PrintReceiptController implements Initializable {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         if (Shared.getCurrentTransactionType() == TransactionType.CARDLESS) {
             printReceipt(
-                    "src\\assets\\logos\\" + Shared.getCurrentATM().getManagedBy().getBankName().replaceAll(" ", "_") + ".png",
+                    "assets/logos/" + Shared.getCurrentATM().getManagedBy().getBankName().replaceAll(" ", "_") + ".png",
                     Shared.getCurrentATM().getManagedBy().getBankName(),
                     sdf.format(Shared.getCurrentTransaction().getTransDate()),
                     String.valueOf(Shared.getCurrentATM().getIdATM()),
@@ -68,7 +69,7 @@ public class PrintReceiptController implements Initializable {
                     Shared.getCurrentCardless().getSender());
         } else {
             printReceipt(
-                    "src\\assets\\logos\\" + Shared.getCurrentATM().getManagedBy().getBankName().replaceAll(" ", "_") + ".png",
+                    "assets/logos/" + Shared.getCurrentATM().getManagedBy().getBankName().replaceAll(" ", "_") + ".png",
                     Shared.getCurrentATM().getManagedBy().getBankName(),
                     sdf.format(Shared.getCurrentTransaction().getTransDate()),
                     String.valueOf(Shared.getCurrentATM().getIdATM()),
@@ -102,7 +103,9 @@ public class PrintReceiptController implements Initializable {
             String txtSender
     ) {
         try {
-            File f = new File("src/printing/receipt.html");
+//            new File("/printing/receipt.html");
+            File f = new File("receipt.html");
+            copyInputStreamToFile(this.getClass().getResourceAsStream("/printing/receipt.html"), f);
             File of = new File("receipt_" + txtTransID + ".pdf");
             Document doc = Jsoup.parse(f);
             System.out.println(img_bankLogo.getImage().getUrl());
@@ -145,12 +148,23 @@ public class PrintReceiptController implements Initializable {
             HtmlConverter.convertToPdf(doc.html(), outputStream);
             outputStream.close();
             Desktop.getDesktop().open(of);
-
+            f.deleteOnExit();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
 
+    private static void copyInputStreamToFile(InputStream inputStream, File file)
+            throws IOException {
 
+        // append = false
+        try (FileOutputStream outputStream = new FileOutputStream(file, false)) {
+            int n = 0;
+            while ((n = inputStream.read()) != -1) {
+                outputStream.write(n);
+            }
+        }
+
+    }
 }

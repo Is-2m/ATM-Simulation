@@ -5,30 +5,33 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import models.*;
 
+import java.net.URI;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Objects;
 
 public abstract class Shared {
-    public static String CardInfoScreen = "../ui/CardInfoScreen.fxml";
-    public static String CardPinScreen = "../ui/CardPinScreen.fxml";
-    public static String ChooseAmountScreen = "../ui/ChooseAmountScreen.fxml";
-    public static String LoginScreen = "../ui/LoginScreen.fxml";
-    public static String OperationChoosingScreen = "../ui/OperationChoosingScreen.fxml";
-    public static String PrintReceiptScreen = "../ui/PrintReceiptScreen.fxml";
-    public static String CardExpiredScreen = "../ui/CardExpiredScreen.fxml";
-    public static String WrongAmountScreen = "../ui/WrongAmountScreen.fxml";
-    public static String ShowBalanceScreen = "../ui/ShowBalanceScreen.fxml";
-    public static String TransferToScreen = "../ui/TransferToScreen.fxml";
-    public static String TakeUrMoneyScreen = "../ui/TakeUrMoneyScreen.fxml";
-    public static String ThanksForVisitScreen = "../ui/ThanksForVisitScreen.fxml";
-    public static String ChangePinScreen = "../ui/ChangePinScreen.fxml";
-    public static String DoneUpdatingScreen = "../ui/DoneUpdatingScreen.fxml";
-    public static String TransferRefScreen = "../ui/TransferRefScreen.fxml";
-    public static String TransferPinScreen = "../ui/TransferPinScreen.fxml";
-    public static String ReCheckScreen = "../ui/ReCheckScreen.fxml";
-    public static String ConfirmAmountScreen = "../ui/ConfirmAmountScreen.fxml";
+    public static String CardInfoScreen = "/ui/CardInfoScreen.fxml";
+    public static String CardPinScreen = "/ui/CardPinScreen.fxml";
+    public static String ChooseAmountScreen = "/ui/ChooseAmountScreen.fxml";
+    public static String LoginScreen = "/ui/LoginScreen.fxml";
+    public static String OperationChoosingScreen = "/ui/OperationChoosingScreen.fxml";
+    public static String PrintReceiptScreen = "/ui/PrintReceiptScreen.fxml";
+    public static String CardExpiredScreen = "/ui/CardExpiredScreen.fxml";
+    public static String WrongAmountScreen = "/ui/WrongAmountScreen.fxml";
+    public static String ShowBalanceScreen = "/ui/ShowBalanceScreen.fxml";
+    public static String TransferToScreen = "/ui/TransferToScreen.fxml";
+    public static String TakeUrMoneyScreen = "/ui/TakeUrMoneyScreen.fxml";
+    public static String ThanksForVisitScreen = "/ui/ThanksForVisitScreen.fxml";
+    public static String ChangePinScreen = "/ui/ChangePinScreen.fxml";
+    public static String DoneUpdatingScreen = "/ui/DoneUpdatingScreen.fxml";
+    public static String TransferRefScreen = "/ui/TransferRefScreen.fxml";
+    public static String TransferPinScreen = "/ui/TransferPinScreen.fxml";
+    public static String ReCheckScreen = "/ui/ReCheckScreen.fxml";
+    public static String ConfirmAmountScreen = "/ui/ConfirmAmountScreen.fxml";
     static Connection con;
 
     static {
@@ -70,8 +73,8 @@ public abstract class Shared {
 
     public static void customizeCurrentAtm(ImageView imgLogo, Label lbl_bankName) {
 //        try {
-        Image logo = new Image(Shared.class.getResourceAsStream("..\\assets\\logos\\" + currentATM.getManagedBy().getBankName().replaceAll(" ", "_") + ".png"));
-        imgLogo.setImage(logo);
+        Image img = new Image("assets/logos/" + currentATM.getManagedBy().getBankName().replaceAll(" ", "_") + ".png");
+        imgLogo.setImage(img);
         lbl_bankName.setText(currentATM.getManagedBy().getBankName());
 //        } catch (Exception e) {
 //            e.printStackTrace();

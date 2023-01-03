@@ -1,8 +1,16 @@
 <component name="ArtifactManager">
-  <artifact type="jar" build-on-make="true" name="ATM_Simulation:jar">
+  <artifact type="jar" name="ATM_Simulation:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/ATM_Simulation_jar</output-path>
     <root id="archive" name="ATM_Simulation.jar">
       <element id="module-output" name="ATM_Simulation" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/javafx-sdk-19/lib/javafx-swt.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/javafx-sdk-19/lib/javafx.web.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/javafx-sdk-19/lib/javafx.base.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/javafx-sdk-19/lib/javafx.fxml.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/javafx-sdk-19/lib/javafx.media.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/javafx-sdk-19/lib/javafx.swing.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/javafx-sdk-19/lib/javafx.controls.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/javafx-sdk-19/lib/javafx.graphics.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/libs/html-manipulating/io-7.2.4.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/libs/html-manipulating/svg-7.2.4.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/libs/html-manipulating/jsoup-1.15.3.jar" path-in-jar="/" />
@@ -14,14 +22,6 @@
       <element id="extracted-dir" path="$PROJECT_DIR$/libs/html-manipulating/slf4j-simple-1.6.1.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/libs/html-manipulating/styled-xml-parser-7.2.4.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/libs/mysql-connector-j-8.0.31.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/libs/javafx-sdk-19/lib/javafx-swt.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/libs/javafx-sdk-19/lib/javafx.web.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/libs/javafx-sdk-19/lib/javafx.base.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/libs/javafx-sdk-19/lib/javafx.fxml.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/libs/javafx-sdk-19/lib/javafx.media.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/libs/javafx-sdk-19/lib/javafx.swing.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/libs/javafx-sdk-19/lib/javafx.controls.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/libs/javafx-sdk-19/lib/javafx.graphics.jar" path-in-jar="/" />
       <element id="file-copy" path="$PROJECT_DIR$/libs/javafx-sdk-19/bin/api-ms-win-core-console-l1-1-0.dll" />
       <element id="file-copy" path="$PROJECT_DIR$/libs/javafx-sdk-19/bin/api-ms-win-core-console-l1-2-0.dll" />
       <element id="file-copy" path="$PROJECT_DIR$/libs/javafx-sdk-19/bin/api-ms-win-core-datetime-l1-1-0.dll" />
