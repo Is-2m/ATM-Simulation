@@ -44,7 +44,7 @@ public class TransferToController implements Initializable {
             txt_CardNum.setText(txt_CardNum.getText().replaceAll("[^\\d]", ""));
         }
         if (txt_CardNum.getLength() > 16) {
-            txt_CardNum.setText(txt_CardNum.getText().substring(0, 15));
+            txt_CardNum.setText(txt_CardNum.getText().substring(0, 16));
         }
         txt_CardNum.positionCaret(txt_CardNum.getLength());
     }
@@ -74,6 +74,7 @@ public class TransferToController implements Initializable {
                     if (amount % 100 == 0) {
                         Date dNow = new Date();
                         SimpleDateFormat ft = new SimpleDateFormat("yyMMddhhmmssMs");
+
                         String datetime = ft.format(dNow);
                         ATM_Transaction transaction = new ATM_Transaction(datetime, dNow, Shared.getCurrentTransactionType(), amount, Shared.getCurrentCard(), card);
                         if (transaction.update()) {
@@ -82,13 +83,14 @@ public class TransferToController implements Initializable {
                             AccountDao.updateAccount(transaction.getDestinationCard().providesAccessTo());
                             Shared.setCurrentTransaction(transaction);
                             NavigationController.navigateTo(Shared.PrintReceiptScreen, (Node) event.getSource());
+                            break;
                         }
                     } else {
                         lbl_tryAgain.setVisible(true);
                         txtAmount.setText("");
                         txtAmount.getStyleClass().add("redBorder");
                     }
-                }else {
+                } else {
                     lbl_tryAgain.setVisible(true);
                     txt_CardNum.setText("");
                     txt_CardNum.getStyleClass().add("redBorder");

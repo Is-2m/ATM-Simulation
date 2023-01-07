@@ -14,8 +14,6 @@ public class NavigationController {
     private static Parent root;
 
     public static void navigateTo(String pathFXML, Node node) {
-        System.out.println(pathFXML);
-        System.out.println(NavigationController.class.getResource(pathFXML));
         try {
             root = FXMLLoader.load(NavigationController.class.getResource(pathFXML));
             stage = (Stage) node.getScene().getWindow();

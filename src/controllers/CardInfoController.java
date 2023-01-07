@@ -35,7 +35,7 @@ public class CardInfoController implements Initializable {
             txt_CardNum.setText(txt_CardNum.getText().replaceAll("[^\\d]", ""));
         }
         if (txt_CardNum.getLength() > 16) {
-            txt_CardNum.setText(txt_CardNum.getText().substring(0, 15));
+            txt_CardNum.setText(txt_CardNum.getText().substring(0, 16));
         }
         txt_CardNum.positionCaret(txt_CardNum.getLength());
     }

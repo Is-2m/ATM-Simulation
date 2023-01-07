@@ -37,7 +37,7 @@ public class ChangePinController implements Initializable {
             txt.setText(txt.getText().replaceAll("[^\\d]", ""));
         }
         if (txt.getLength() > 4) {
-            txt.setText(txt.getText().substring(0, 3));
+            txt.setText(txt.getText().substring(0, 4));
         }
         txt.positionCaret(txt.getLength());
     }
@@ -48,7 +48,7 @@ public class ChangePinController implements Initializable {
 
     public void btn_next_Clicked(ActionEvent event) {
         Boolean isSame = Integer.parseInt(txt_newPinConf.getText()) == Integer.parseInt(txt_newPin.getText());
-        if (!isSame) {
+        if (!isSame || txt_newPin.getLength()!=4) {
             txt_newPinConf.getStyleClass().add("redBorder");
             txt_newPin.getStyleClass().add("redBorder");
         } else {
