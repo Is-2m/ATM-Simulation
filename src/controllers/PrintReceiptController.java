@@ -14,10 +14,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 import java.awt.*;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
@@ -105,9 +102,10 @@ public class PrintReceiptController implements Initializable {
         try {
 //            new File("/printing/receipt.html");
             File f = new File("receipt.html");
-            copyInputStreamToFile(this.getClass().getResourceAsStream("/printing/receipt.html"), f);
+//            copyInputStreamToFile(this.getClass().getResourceAsStream("/printing/receipt.html"), f);
             File of = new File("receipt_" + txtTransID + ".pdf");
-            Document doc = Jsoup.parse(f);
+//            Document doc = Jsoup.parse(f);
+            Document doc = Jsoup.parse(getReceiptString(this.getClass().getResourceAsStream("/printing/receipt.html")));
             System.out.println(img_bankLogo.getImage().getUrl());
             doc.getElementById("imgLogo").attr("src", imgLogo);
             doc.getElementById("bankName").text(bankName);
@@ -155,16 +153,24 @@ public class PrintReceiptController implements Initializable {
 
     }
 
-    private static void copyInputStreamToFile(InputStream inputStream, File file)
-            throws IOException {
-
-        // append = false
-        try (FileOutputStream outputStream = new FileOutputStream(file, false)) {
-            int n = 0;
-            while ((n = inputStream.read()) != -1) {
-                outputStream.write(n);
+    public static String getReceiptString(InputStream is) {
+        BufferedReader br = new BufferedReader(new InputStreamReader(is));
+        StringBuilder sb = new StringBuilder();
+        String line;
+        try {
+            while ((line = br.readLine()) != null) {
+                sb.append(line);
+                sb.append("\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                br.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
-
+        return sb.toString();
     }
 }
