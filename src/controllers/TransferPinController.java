@@ -42,7 +42,7 @@ public class TransferPinController implements Initializable {
     }
 
     public void btn_cancel_Clicked(ActionEvent e) throws IOException {
-        NavigationController.navigateTo(Shared.LoginScreen, ((Node) e.getSource()));
+        NavigationController.navigateTo(Shared.ThanksForVisitScreen, ((Node) e.getSource()));
     }
 
     public void btn_next_Clicked(ActionEvent event) {
@@ -59,7 +59,7 @@ public class TransferPinController implements Initializable {
                 }
                 attempts++;
             }
-            NavigationController.navigateTo(Shared.LoginScreen, (Node) event.getSource());
+            NavigationController.navigateTo(Shared.ThanksForVisitScreen, (Node) event.getSource());
 
         } catch (Exception ex) {
             ex.printStackTrace();

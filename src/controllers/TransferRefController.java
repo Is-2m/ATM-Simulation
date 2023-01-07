@@ -40,7 +40,7 @@ public class TransferRefController implements Initializable {
     }
 
     public void btn_cancel_Clicked(ActionEvent e) throws IOException {
-        NavigationController.navigateTo(Shared.LoginScreen, ((Node) e.getSource()));
+        NavigationController.navigateTo(Shared.ThanksForVisitScreen, ((Node) e.getSource()));
     }
 
     public void btn_next_Clicked(ActionEvent event) {

@@ -27,7 +27,7 @@ public class ReCheckController implements Initializable {
         if (Shared.getCurrentTransactionType() == TransactionType.WITHDRAWAL) {
             NavigationController.navigateTo(Shared.OperationChoosingScreen, (Node) event.getSource());
         } else {
-            NavigationController.navigateTo(Shared.LoginScreen, (Node) event.getSource());
+            NavigationController.navigateTo(Shared.ThanksForVisitScreen, (Node) event.getSource());
         }
     }
 }
