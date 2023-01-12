@@ -17,8 +17,9 @@ public class ATMDao {
 
     public static ATM getAtm() {
         int atmId = atmIds[new Random().nextInt(0, 17)];
+        ATM atm = new ATM();
         try {
-            ATM atm = new ATM();
+
             Statement stmt = con.createStatement();
             String qry = "SELECT * FROM atm WHERE idAtm= " + atmId;
             ResultSet res = stmt.executeQuery(qry);
@@ -28,10 +29,11 @@ public class ATMDao {
                     atm.setManagedBy(BankDao.getBank(res.getInt("bankID")));
                 }
             }
-            return atm;
+
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
+        return atm;
     }
 }

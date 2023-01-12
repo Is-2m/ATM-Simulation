@@ -45,4 +45,5 @@ public class MainApp extends Application {
     private static void initialise() {
         Shared.setCurrentATM(ATMDao.getAtm());
     }
+
 }

@@ -1,10 +1,19 @@
 package dao;
 
+import controllers.NavigationController;
+import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
 import models.*;
 
+import java.io.IOException;
 import java.net.URI;
 import java.net.URL;
 import java.sql.Connection;
@@ -32,13 +41,38 @@ public abstract class Shared {
     public static String TransferPinScreen = "/ui/TransferPinScreen.fxml";
     public static String ReCheckScreen = "/ui/ReCheckScreen.fxml";
     public static String ConfirmAmountScreen = "/ui/ConfirmAmountScreen.fxml";
+    public static String LostConnectionScreen = "/ui/LostConnectionScreen.fxml";
+
     static Connection con;
 
     static {
         try {
             con = DriverManager.getConnection("jdbc:mysql://localhost/db_atm_simulation", "root", "");
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            try {
+                Stage stage = new Stage();
+                Font.loadFont(Shared.class.getResourceAsStream("./assets/fonts/poppins.ttf"), 16);
+                Parent root = null;
+
+                root = FXMLLoader.load(Objects.requireNonNull(Shared.class.getResource(Shared.LostConnectionScreen)));
+
+                stage.setTitle("ATM Simulation");
+                stage.setScene(new Scene(root));
+                stage.setFullScreenExitHint("Please Press 'Esc' To Exit The Simulation And Close The App");
+                stage.setFullScreen(true);
+
+                stage.fullScreenProperty().addListener((ChangeListener) (o, oldVal, newVal) -> {
+                    if (!(boolean) newVal) {
+                        Platform.exit();
+                    }
+                });
+
+//        stage.setResizable(false);
+                stage.show();
+                e.printStackTrace();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
         }
     }
 

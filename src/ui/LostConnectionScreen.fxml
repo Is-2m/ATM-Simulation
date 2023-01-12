@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
@@ -17,7 +16,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1360.0" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1360.0" stylesheets="@styles/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LostConnectionController">
     <left>
         <GridPane maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="356.0" prefWidth="100.0" BorderPane.alignment="CENTER">
             <columnConstraints>
@@ -89,69 +88,56 @@
                     </image>
                 </ImageView>
                 <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <center>
-                        <ImageView fitHeight="345.0" fitWidth="421.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-                            <image>
-                                <Image url="@../assets/images/the_two_weird_guys.png" />
-                            </image>
-                            <BorderPane.margin>
-                                <Insets bottom="60.0" right="160.0" />
-                            </BorderPane.margin>
-                        </ImageView>
-                    </center>
                     <top>
-                        <FlowPane prefHeight="57.0" prefWidth="1078.0" BorderPane.alignment="CENTER">
+                        <FlowPane prefHeight="57.0" prefWidth="1078.0" BorderPane.alignment="CENTER" />
+                    </top>
+                    <center>
+                        <GridPane BorderPane.alignment="CENTER">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="76.0" minHeight="10.0" prefHeight="76.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="264.0" minHeight="10.0" prefHeight="201.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="191.0" minHeight="10.0" prefHeight="147.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
                             <children>
-                                <ImageView fx:id="img_bankLogo" fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@../assets/images/bankLogo.png" />
-                                    </image>
-                                    <FlowPane.margin>
-                                        <Insets bottom="5.0" left="10.0" top="10.0" />
-                                    </FlowPane.margin>
-                                </ImageView>
-                                <Label fx:id="lbl_bankName" text="Lorem">
-                                    <FlowPane.margin>
-                                        <Insets left="10.0" />
-                                    </FlowPane.margin>
+                                <Label styleClass="labels" text="ERROR THE SYSTEM COULDN'T CONNECT TO THE SERVER " textFill="#f20000" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                     <font>
-                                        <Font name="Poppins Regular" size="38.0" />
+                                        <Font name="Poppins SemiBold" size="24.0" />
                                     </font>
                                 </Label>
+                                <ImageView fitHeight="272.0" fitWidth="561.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.rowSpan="2" GridPane.valignment="TOP">
+                                    <image>
+                                        <Image url="@../assets/images/lost_connection.jpg" />
+                                    </image>
+                                    <GridPane.margin>
+                                        <Insets bottom="20.0" />
+                                    </GridPane.margin>
+                                </ImageView>
+                                <Button mnemonicParsing="false" onAction="#btn_Restart_Clicked" prefHeight="70.0" prefWidth="234.0" styleClass="red_button" text="EXIT" GridPane.rowIndex="3">
+                                    <GridPane.margin>
+                                        <Insets left="20.0" />
+                                    </GridPane.margin>
+                                    <font>
+                                        <Font name="Poppins Regular" size="30.0" />
+                                    </font>
+                                </Button>
+                        <Label styleClass="labels" text="PLEASE CHECK IF THE DATABASE SERVER IS UP AND RUNNING" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets top="50.0" />
+                           </GridPane.margin>
+                        </Label>
                             </children>
-                        </FlowPane>
-                    </top>
-               <right>
-                  <GridPane prefHeight="455.0" prefWidth="283.0" BorderPane.alignment="CENTER">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints maxHeight="146.0" minHeight="10.0" prefHeight="119.0" vgrow="SOMETIMES" />
-                      <RowConstraints maxHeight="184.0" minHeight="10.0" prefHeight="113.0" vgrow="SOMETIMES" />
-                      <RowConstraints maxHeight="230.0" minHeight="10.0" prefHeight="223.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <Button fx:id="btn_logWithCard" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#logWithCard" styleClass="choice_button" text="INSERT CARD" GridPane.halignment="CENTER">
-                           <font>
-                              <Font name="Arial Bold" size="18.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor></Button>
-                        <Button fx:id="btn_logWithoutCard" layoutX="16.0" layoutY="57.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#logCardless" styleClass="choice_button" text="CARDLESS SERVICE" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="1">
-                           <font>
-                              <Font name="Arial Bold" size="18.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor></Button>
-                     </children>
-                     <BorderPane.margin>
-                        <Insets right="20.0" />
-                     </BorderPane.margin>
-                  </GridPane>
-               </right>
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <BorderPane.margin>
+                                <Insets />
+                            </BorderPane.margin>
+                        </GridPane>
+                    </center>
                 </BorderPane>
             </children>
             <BorderPane.margin>

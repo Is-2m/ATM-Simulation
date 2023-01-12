@@ -74,7 +74,6 @@ public class TransferToController implements Initializable {
                     if (amount % 100 == 0) {
                         Date dNow = new Date();
                         SimpleDateFormat ft = new SimpleDateFormat("yyMMddhhmmssMs");
-
                         String datetime = ft.format(dNow);
                         ATM_Transaction transaction = new ATM_Transaction(datetime, dNow, Shared.getCurrentTransactionType(), amount, Shared.getCurrentCard(), card);
                         if (transaction.update()) {
