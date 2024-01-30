@@ -28,10 +28,6 @@ This is a simple ATM simulation software developed in Java using JavaFX. The sof
 - Use the GUI interface to navigate through available options.
 - Simulate different banking operations and observe the application's behavior.
 
-// ## Screenshots
-
-// Include screenshots or gifs demonstrating the software in action if applicable.
-
 
 Feel free to explore and modify the code to suit your needs.
 
